@@ -293,6 +293,9 @@ int main(int argc, char** argv)
   Int_t eventCounter = 0;
   int statuscounter = 0;
   Int_t coincidenceCounter = 0;
+  Int_t fastCoinc = 0;
+  Int_t lessFastCoinc = 0;
+  Int_t slowCoinc = 0;
   // run on all hits
   // a event vector is ready and empty now. In the loop, all the hits with the same eventID
   // will be pushed to the same event vector, and when a new eventID is found, the vector
@@ -385,10 +388,7 @@ int main(int argc, char** argv)
           g2_totalEnDep = en2; // set total en dep from primary 2
 
           // just count the ones with more than 0.4 in both, but save all of them
-          if((en1 > 0.4) && (en2 > 0.4))
-          {
-            coincidenceCounter++;
-          }
+
 
           // PRIMARY 1
           g1_firstMatType = fromPrimary1[0].layerID;  // type of first energy depo
@@ -425,6 +425,30 @@ int main(int argc, char** argv)
           }
           g2_enDepMat0 = sumPr2_t0;
           g2_enDepMat1 = sumPr2_t1;
+
+          // count special cases
+          if((en1 > 0.4) && (en2 > 0.4)) // but only for "coincidences"
+          {
+            coincidenceCounter++;
+            if(g1_enDepMat1 >= 0.01 && g2_enDepMat1 >= 0.01 ) // fast events, i.e. at least 10 keV in plastic for both gamma 1 and gamma 2
+            {
+              fastCoinc++;
+            }
+            // less fast events, i.e:
+            if(g1_enDepMat1 >= 0.01 && g2_enDepMat1 < 0.01 ) //at least 10 keV in plastic for gamma 1, but less then 10 keV for plastic in gamma 2
+            {
+              lessFastCoinc++;
+            }
+            if(g1_enDepMat1 < 0.01 && g2_enDepMat1 >= 0.01 ) //at least 10 keV in plastic for gamma 2, but less then 10 keV for plastic in gamma 1
+            {
+              lessFastCoinc++;
+            }
+            if(g1_enDepMat1 < 0.01 && g2_enDepMat1 < 0.01 ) // slow event, energy only in lyso
+            {
+              slowCoinc++;
+            }
+
+          }
           tree->Fill();
         }
         // clear struct, to start a new one
@@ -481,6 +505,12 @@ int main(int argc, char** argv)
   std::cout << "Number of events                            = " << eventCounter << std::endl;
   std::cout << "Number of output tree entries               = " << tree->GetEntries() << std::endl;
   std::cout << "Events with > 400 Kev from both primaries   = " << coincidenceCounter << std::endl;
+  std::cout << "More then 10 KeV in both plastics           = " << fastCoinc << std::endl;
+  std::cout << "More then 10 Kev in only one plastic        = " << lessFastCoinc << std::endl;
+  std::cout << "Less then 10 keV in both plastic            = " << slowCoinc << std::endl;
+  std::cout << "Fast coincidences fraction                  = " << (float)fastCoinc / (float) coincidenceCounter << std::endl;
+  std::cout << "Less fast coincidences fraction             = " << (float) lessFastCoinc / (float) coincidenceCounter << std::endl;
+  std::cout << "Slow coincidences fraction                  = " << (float) slowCoinc / (float) coincidenceCounter << std::endl;
   outFile->cd();
   tree->Write();
   outFile->Close();

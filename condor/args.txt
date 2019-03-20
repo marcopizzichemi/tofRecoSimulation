@@ -1,0 +1,3 @@
+/afs/cern.ch/work/m/mpizzich/gate8.1/gate_v8.1.p01/build/Gate /afs/cern.ch/work/m/mpizzich/simulations/tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um 0.01 1 0 /eos/project/c/crystalclear/TOFreco/testOut/sim1um0.root
+/afs/cern.ch/work/m/mpizzich/gate8.1/gate_v8.1.p01/build/Gate /afs/cern.ch/work/m/mpizzich/simulations/tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um 0.01 1 1 /eos/project/c/crystalclear/TOFreco/testOut/sim1um1.root
+/afs/cern.ch/work/m/mpizzich/gate8.1/gate_v8.1.p01/build/Gate /afs/cern.ch/work/m/mpizzich/simulations/tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um 0.01 1 2 /eos/project/c/crystalclear/TOFreco/testOut/sim1um2.root

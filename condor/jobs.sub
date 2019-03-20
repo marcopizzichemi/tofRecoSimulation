@@ -1,0 +1,8 @@
+executable              = run_script.sh
+output                  = out/test.$(ClusterId).$(ProcId).out
+error                   = err/test.$(ClusterId).$(ProcId).err
+log                     = log/test.$(ClusterId).log
+
+
++JobFlavour             = "microcentury"
+queue arguments from args.txt

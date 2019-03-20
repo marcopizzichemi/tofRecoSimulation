@@ -1,8 +1,0 @@
-# VISUALITATION
-/vis/disable
-#/control/execute {folder}/visu.mac
-
-/control/execute {folder}/run.mac
-
-# S T A R T   T H E   A C Q U I S I T I O N
-/gate/application/startDAQ

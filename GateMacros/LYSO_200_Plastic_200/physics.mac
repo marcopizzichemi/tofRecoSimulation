@@ -52,6 +52,6 @@
 # /gate/physics/Positron/SetCutInRegion   Plastic 0.000001 mm
 
 # Cuts for particle in NEMACylinder
-/gate/physics/Gamma/SetCutInRegion      world 0.1 nm
-/gate/physics/Electron/SetCutInRegion   world 0.1 nm
-/gate/physics/Positron/SetCutInRegion   world 0.1 nm
+/gate/physics/Gamma/SetCutInRegion      LYSO_cry 0.1 nm
+/gate/physics/Electron/SetCutInRegion   LYSO_cry 0.1 nm
+/gate/physics/Positron/SetCutInRegion   LYSO_cry 0.1 nm

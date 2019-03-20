@@ -1,6 +1,6 @@
 # VISUALITATION
-#/vis/disable
-/control/execute {folder}/visu.mac
+# /vis/disable
+#/control/execute {folder}/visu.mac
 
 # MATERIALS AND PHYSICS
 /gate/geometry/setMaterialDatabase {folder}/GateMaterials.db
@@ -37,4 +37,4 @@
 /gate/random/verbose 1
 
 # S T A R T   T H E   A C Q U I S I T I O N
-#/gate/application/startDAQ
+# /gate/application/startDAQ

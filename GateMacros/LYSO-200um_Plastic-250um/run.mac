@@ -26,18 +26,18 @@
 # OUTPUT
 # ROOT Output format
 /gate/output/root/enable
-/gate/output/root/setFileName sim100um
+/gate/output/root/setFileName sim{cut}um
 /gate/output/root/setRootSinglesFlag 0
 /gate/output/root/setRootCoincidencesFlag 0
 
 # SIMULATION DURATION
-/gate/application/setTimeSlice     3  s
+/gate/application/setTimeSlice     {time}  s
 /gate/application/setTimeStart     0. s
-/gate/application/setTimeStop      3  s
+/gate/application/setTimeStop      {time}  s
 
 # RANDOM NUMBER GENERATOR
 /gate/random/setEngineName MersenneTwister
-/gate/random/setEngineSeed 123456789
+/gate/random/setEngineSeed {seed}
 /gate/random/verbose 0
 
 # S T A R T   T H E   A C Q U I S I T I O N

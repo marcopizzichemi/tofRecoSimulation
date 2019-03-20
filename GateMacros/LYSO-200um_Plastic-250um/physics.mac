@@ -35,6 +35,6 @@
 #       C U T S
 #
 # Cuts for particles
-/gate/physics/Gamma/SetCutInRegion      world 100 um
-/gate/physics/Electron/SetCutInRegion   world 100 um
-/gate/physics/Positron/SetCutInRegion   world 100 um
+/gate/physics/Gamma/SetCutInRegion      world {cut} um
+/gate/physics/Electron/SetCutInRegion   world {cut} um
+/gate/physics/Positron/SetCutInRegion   world {cut} um

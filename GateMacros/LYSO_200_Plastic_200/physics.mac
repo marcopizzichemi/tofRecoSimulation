@@ -25,7 +25,7 @@
 #/gate/physics/processes/eMultipleScattering/setGeometricalStepLimiterType e+ distanceToBoundary
 
 /gate/physics/addPhysicsList emstandard_opt3
-/gate/physics/addProcess DecayPhysics
+# /gate/physics/addProcess DecayPhysics
 /gate/physics/addProcess RadioactiveDecay
 
 /gate/physics/processList Enabled
@@ -42,16 +42,16 @@
 #/gate/physics/Positron/SetCutInRegion   NEMACylinder 1.0 cm
 
 # Cuts for particle in NEMACylinder
-/gate/physics/Gamma/SetCutInRegion      LYSO 0.000001 mm
-/gate/physics/Electron/SetCutInRegion   LYSO 0.000001 cm
-/gate/physics/Positron/SetCutInRegion   LYSO 0.000001 cm
+# /gate/physics/Gamma/SetCutInRegion      LYSO 0.000001 mm
+# /gate/physics/Electron/SetCutInRegion   LYSO 0.000001 cm
+# /gate/physics/Positron/SetCutInRegion   LYSO 0.000001 cm
 
 # Cuts for particle in NEMACylinder
-/gate/physics/Gamma/SetCutInRegion      Plastic 0.000001 mm
-/gate/physics/Electron/SetCutInRegion   Plastic 0.000001 mm
-/gate/physics/Positron/SetCutInRegion   Plastic 0.000001 mm
+# /gate/physics/Gamma/SetCutInRegion      Plastic 0.000001 mm
+# /gate/physics/Electron/SetCutInRegion   Plastic 0.000001 mm
+# /gate/physics/Positron/SetCutInRegion   Plastic 0.000001 mm
 
 # Cuts for particle in NEMACylinder
-/gate/physics/Gamma/SetCutInRegion      cylindricalPET 0.000001 mm
-/gate/physics/Electron/SetCutInRegion   cylindricalPET 0.000001 mm
-/gate/physics/Positron/SetCutInRegion   cylindricalPET 0.000001 mm
+/gate/physics/Gamma/SetCutInRegion      world 0.1 nm
+/gate/physics/Electron/SetCutInRegion   world 0.1 nm
+/gate/physics/Positron/SetCutInRegion   world 0.1 nm

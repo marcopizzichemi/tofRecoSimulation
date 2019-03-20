@@ -38,7 +38,7 @@
 /gate/module/setMaterial Air
 /gate/module/vis/forceWireframe
 /gate/module/vis/setColor gray
-/gate/module/vis/setVisible 1
+/gate/module/vis/setVisible 0
 
 # S U B M O D U L E
 /gate/module/daughters/name submodule
@@ -61,7 +61,7 @@
 /gate/crystal/vis/forceWireframe
 /gate/crystal/vis/setColor magenta
 /gate/crystal/repeaters/insert cubicArray
-/gate/crystal/vis/setVisible 1
+/gate/crystal/vis/setVisible 0
 
 # L A Y E R (s)
 /gate/crystal/daughters/name LYSO
@@ -73,7 +73,7 @@
 /gate/LYSO/setMaterial LYSO
 # /gate/LYSO/vis/forceWireframe
 /gate/LYSO/vis/setColor yellow
-/gate/LYSO/vis/setVisible 1
+/gate/LYSO/vis/setVisible 0
 
 /gate/crystal/daughters/name Plastic
 /gate/crystal/daughters/insert box
@@ -84,7 +84,7 @@
 /gate/Plastic/setMaterial Plastic
 # /gate/Plastic/vis/forceWireframe
 /gate/Plastic/vis/setColor cyan
-/gate/Plastic/vis/setVisible 1
+/gate/Plastic/vis/setVisible 0
 
 
 # R E P E A T C R Y S T A L

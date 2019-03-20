@@ -1,31 +1,21 @@
 # VISUALITATION
-/vis/disable
-#/control/execute ./visu.mac
+#/vis/disable
+/control/execute {folder}/visu.mac
 
 # MATERIALS AND PHYSICS
-/gate/geometry/setMaterialDatabase ./GateMaterials.db
-/control/execute ./physics.mac
+/gate/geometry/setMaterialDatabase {folder}/GateMaterials.db
+/control/execute {folder}/physics.mac
 
 # GEOMETRY
-/control/execute ./geometry.mac    # 2 plates about as big as clearpem
-/control/execute ./attachToSystem.mac
+/control/execute {folder}/geometry.mac    # 2 plates about as big as clearpem
+/control/execute {folder}/attachToSystem.mac
 
 # INITIALIZE
 /gate/run/initialize
+/gate/physics/displayCuts
 
 # SOURCES
-/control/execute ./SNR_source.mac
-#/control/execute ./sourceCylinderLarge.mac    # background cylinder, can be bg to the sources or the uniform cylinder for Normalization
-#/control/execute ./sources.mac        # point sources
-# /control/execute ./derenzo_geom.mac        # derenzo phantom
-# /control/execute ./background.mac
-
-# ROTATE ALL FOV
-# /gate/cylindricalPET/placement/setRotationAxis 0 1 0
-# /gate/cylindricalPET/placement/setRotationAngle 90 deg
-# /gate/cylinderSource/placement/setRotationAxis 0 1 0
-# /gate/cylinderSource/placement/setRotationAngle 90 deg
-
+/control/execute {folder}/SNR_source.mac
 
 /gate/geometry/rebuild
 
@@ -33,8 +23,8 @@
 # ROOT Output format
 /gate/output/root/enable
 /gate/output/root/setFileName tofReco
-/gate/output/root/setRootSinglesFlag 1
-/gate/output/root/setRootCoincidencesFlag 1
+/gate/output/root/setRootSinglesFlag 0
+/gate/output/root/setRootCoincidencesFlag 0
 
 # SIMULATION DURATION
 /gate/application/setTimeSlice     3  s
@@ -47,4 +37,4 @@
 /gate/random/verbose 1
 
 # S T A R T   T H E   A C Q U I S I T I O N
-/gate/application/startDAQ
+#/gate/application/startDAQ

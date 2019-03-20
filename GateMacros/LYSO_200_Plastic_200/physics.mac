@@ -1,0 +1,57 @@
+#
+#       P H Y S I C S
+#
+#/gate/physics/addProcess PhotoElectric
+#/gate/physics/processes/PhotoElectric/setModel StandardModel
+#
+#/gate/physics/addProcess Compton
+#/gate/physics/processes/Compton/setModel StandardModel
+#
+#/gate/physics/addProcess RayleighScattering
+#/gate/physics/processes/RayleighScattering/setModel LivermoreModel
+#
+#/gate/physics/addProcess ElectronIonisation
+#/gate/physics/processes/ElectronIonisation/setModel StandardModel e-
+#/gate/physics/processes/ElectronIonisation/setModel StandardModel e+
+#
+#/gate/physics/addProcess Bremsstrahlung
+#/gate/physics/processes/Bremsstrahlung/setModel StandardModel e-
+#/gate/physics/processes/Bremsstrahlung/setModel StandardModel e+
+#
+#/gate/physics/addProcess PositronAnnihilation
+#
+#/gate/physics/addProcess eMultipleScattering
+#/gate/physics/processes/eMultipleScattering/setGeometricalStepLimiterType e- distanceToBoundary
+#/gate/physics/processes/eMultipleScattering/setGeometricalStepLimiterType e+ distanceToBoundary
+
+/gate/physics/addPhysicsList emstandard_opt3
+/gate/physics/addProcess DecayPhysics
+/gate/physics/addProcess RadioactiveDecay
+
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+
+#
+#       C U T S
+#
+
+
+# Cuts for particle in NEMACylinder
+#/gate/physics/Gamma/SetCutInRegion      NEMACylinder 1.0 cm
+#/gate/physics/Electron/SetCutInRegion   NEMACylinder 1.0 cm
+#/gate/physics/Positron/SetCutInRegion   NEMACylinder 1.0 cm
+
+# Cuts for particle in NEMACylinder
+/gate/physics/Gamma/SetCutInRegion      LYSO 0.000001 mm
+/gate/physics/Electron/SetCutInRegion   LYSO 0.000001 cm
+/gate/physics/Positron/SetCutInRegion   LYSO 0.000001 cm
+
+# Cuts for particle in NEMACylinder
+/gate/physics/Gamma/SetCutInRegion      Plastic 0.000001 mm
+/gate/physics/Electron/SetCutInRegion   Plastic 0.000001 mm
+/gate/physics/Positron/SetCutInRegion   Plastic 0.000001 mm
+
+# Cuts for particle in NEMACylinder
+/gate/physics/Gamma/SetCutInRegion      cylindricalPET 0.000001 mm
+/gate/physics/Electron/SetCutInRegion   cylindricalPET 0.000001 mm
+/gate/physics/Positron/SetCutInRegion   cylindricalPET 0.000001 mm

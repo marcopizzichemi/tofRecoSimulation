@@ -101,6 +101,7 @@ Create a folder somewhere
 copy the jobs.sub and run_script.su file there
 Create 3 subdirs, err, log, out
 properly set the variables in args.txt. 
+```
 
 Each line in args.txt is a condor job. You need to specify in each line 
 

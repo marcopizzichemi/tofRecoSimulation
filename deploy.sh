@@ -2,9 +2,11 @@
 if [ -z "$1" ]
   then
     echo "No argument supplied, so compiling with machine compiler..."
+    set --
     g++ -o ./bin/tofReco ./scripts/tofReco.cpp `root-config --cflags --libs`
 else
   if [ $1 = "lxplus" ]; then
+    set --
     echo "Sourcing compiler, ROOT and Geant4 for lxplus..."
     source /cvmfs/sft.cern.ch/lcg/app/releases/ROOT/6.06.08/x86_64-slc6-gcc49-opt/root/bin/thisroot.sh
     source /cvmfs/sft.cern.ch/lcg/external/gcc/4.9.1/x86_64-slc6/setup.sh

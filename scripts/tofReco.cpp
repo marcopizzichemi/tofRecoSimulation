@@ -43,6 +43,10 @@
 #include "TCanvas.h"
 #include "TRandom.h"
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <dirent.h>
+
 #define PI 3.141592653
 
 
@@ -73,11 +77,25 @@ bool compareByTime(const enDep &a,const enDep  &b)
   return a.time < b.time;
 }
 
+// list files in directory
+// taken from
+// http://www.martinbroadhurst.com/list-the-files-in-a-directory-in-c.html
+void read_directory(const std::string& name, std::vector<std::string> &v)
+{
+    DIR* dirp = opendir(name.c_str());
+    struct dirent * dp;
+    while ((dp = readdir(dirp)) != NULL) {
+        v.push_back(dp->d_name);
+    }
+    closedir(dirp);
+}
+
 void usage()
 {
-  std::cout << "\t\t" << "[-i|--input] <input file>  [-o|--output] <output file> " << std::endl
-  << "\t\t" << "[ <input file>      = name of input file, from GATE sim ] " << std::endl
-  << "\t\t" << "[ <output file> ]   = name of output file where ttree will be stored " << std::endl
+  std::cout << "\t\t" << "[-f|--folder] <input folder> [-i|--input] <input files prefix>  [-o|--output] <output file> " << std::endl
+  << "\t\t" << "[ <input folder>          = path to input folder, from GATE sim  ] " << std::endl
+  << "\t\t" << "[ <input files prefix>    = prefix of input files, from GATE sim ] " << std::endl
+  << "\t\t" << "[ <output file> ]         = name of output file                  ] " << std::endl
   << "\t\t" << std::endl;
 }
 
@@ -100,33 +118,41 @@ int main(int argc, char** argv)
   // --------------------------------//
   // Parse input args                //
   // --------------------------------//
-  std::string inputName = "";
+  std::string prefixName = "";
   std::string outputName = "";
+  std::string folderName = "";
   static struct option longOptions[] =
   {
 			{ "input", required_argument, 0, 0 },
 			{ "output", required_argument, 0, 0 },
+      { "folder", required_argument, 0, 0 },
 			{ NULL, 0, 0, 0 }
 	};
   while(1) {
 		int optionIndex = 0;
-		int c = getopt_long(argc, argv, "i:o:", longOptions, &optionIndex);
+		int c = getopt_long(argc, argv, "i:o:f:", longOptions, &optionIndex);
 
 		if (c == -1) {
 			break;
 		}
 
 		if (c == 'i'){
-			inputName = (char *)optarg;
+			prefixName = (char *)optarg;
     }
 		else if (c == 'o'){
       outputName = (char *)optarg;
     }
+    else if (c == 'f'){
+      folderName = (char *)optarg;
+    }
 		else if (c == 0 && optionIndex == 0){
-      inputName = (char *)optarg;
+      prefixName = (char *)optarg;
     }
     else if (c == 0 && optionIndex == 1){
       outputName = (char *)optarg;
+    }
+    else if (c == 0 && optionIndex == 2){
+      folderName = (char *)optarg;
     }
 		else
     {
@@ -138,9 +164,15 @@ int main(int argc, char** argv)
   // --------------------------------//
 
   // --------------------------------//
-  // check                           //
+  // checks                          //
   // --------------------------------//
-  if(inputName.empty())
+  if(folderName.empty())
+  {
+    std::cout << "ERROR! You need to provide an input folder!" << std::endl;
+    usage();
+    return 1;
+  }
+  if(prefixName.empty())
   {
     std::cout << "ERROR! You need to provide an input file name!" << std::endl;
     usage();
@@ -154,20 +186,63 @@ int main(int argc, char** argv)
   }
 
 
+
   // --------------------------------//
   // Feedback to user                //
   // --------------------------------//
-  std::cout << "Input file           = " << inputName << std::endl;
+  std::cout << "Input folder         = " << folderName << std::endl;
+  std::cout << "Input files prefix   = " << prefixName << std::endl;
   std::cout << "Output file          = " << outputName << std::endl;
-  TFile *inputFile = TFile::Open(inputName.c_str());
+
+
+  // --------------------------------//
+  // read input file(s)              //
+  // --------------------------------//
+  std::vector<std::string> v;
+  // list files in directory folderName
+  read_directory(folderName, v);
+
+  std::vector<std::string> listInputFiles;
+  // extract only files starting with prefixName
+  for(unsigned int i = 0 ; i < v.size() ; i++)
+  {
+    if(!v[i].compare(0,prefixName.size(),prefixName))
+    {
+      listInputFiles.push_back(folderName + "/" + v[i]);
+    }
+  }
+  // check if the list is empty
+  if(listInputFiles.size() == 0)
+  {
+    std::cout << std::endl;
+    std::cout << "ERROR! Some input files do not exists! Aborting." << std::endl;
+    std::cout << "See program usage below..." << std::endl;
+    std::cout << std::endl;
+    std::cout << argv[0];
+    usage();
+    return 1;
+  }
+  //----------------------------------------------------------//
+  //  Get TChain from input TTree files                       //
+  //----------------------------------------------------------//
+  TChain* Hits = new TChain("Hits");  // create the input tchain and the analysis ttree
+  for(unsigned int i = 0 ; i < listInputFiles.size(); i++)
+  {
+    std::cout << "Adding file " << listInputFiles[i] << std::endl;
+    Hits->Add(listInputFiles[i].c_str());
+  }
+  std::cout << "|----------------------------------------|" << std::endl;
+
+
+  // TFile *inputFile = TFile::Open(inputName.c_str());
   // --------------------------------//
 
 
   // --------------------------------//
   // Read the Hits tree              //
   // --------------------------------//
-  TTree *Hits;
-  Hits = (TTree*) inputFile->Get("Hits");
+  // TTree *Hits;
+  // Hits = (TTree*) inputFile->Get("Hits");
   //variables
   Int_t    HITSPDGEncoding;
   Int_t    HITStrackID;

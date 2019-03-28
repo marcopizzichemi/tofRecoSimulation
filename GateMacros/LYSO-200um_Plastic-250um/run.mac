@@ -10,16 +10,20 @@
 /control/execute {folder}/attachToSystem.mac
 /control/execute {folder}/digitizer.mac
 
-# SOURCES
+# PHANTOM GEOMETRY
 # /control/execute {folder}/SNR_source.mac
 /control/execute {folder}/NEMA_IQ_phantom.mac
-/control/execute {folder}/NEMA_IQ_source.mac
+
 
 # PHYSICS
 /control/execute {folder}/physics.mac
 
 # INITIALIZE
 /gate/run/initialize
+
+# SOURCES
+/control/execute {folder}/NEMA_IQ_source.mac
+
 /gate/physics/displayCuts
 
 

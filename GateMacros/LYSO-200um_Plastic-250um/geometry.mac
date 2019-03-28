@@ -102,6 +102,7 @@
 /gate/rsector/repeaters/insert ring
 # /gate/rsector/ring/setRepeatNumber 1
 /gate/rsector/ring/setRepeatNumber 751
+# /gate/rsector/ring/setRepeatNumber 10
 
 
 # S O U R C E S

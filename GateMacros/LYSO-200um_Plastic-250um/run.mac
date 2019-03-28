@@ -8,25 +8,26 @@
 # GEOMETRY
 /control/execute {folder}/geometry.mac    # 2 plates about as big as clearpem
 /control/execute {folder}/attachToSystem.mac
+/control/execute {folder}/digitizer.mac
 
 # PHYSICS
 /control/execute {folder}/physics.mac
-
-
 
 # INITIALIZE
 /gate/run/initialize
 /gate/physics/displayCuts
 
 # SOURCES
-/control/execute {folder}/SNR_source.mac
+# /control/execute {folder}/SNR_source.mac
+/control/execute {folder}/NEMA_IQ_phantom.mac
+/control/execute {folder}/NEMA_IQ_source.mac
 
 /gate/geometry/rebuild
 
 # OUTPUT
 # ROOT Output format
 /gate/output/root/enable
-/gate/output/root/setFileName sim{cut}um
+/gate/output/root/setFileName {outname}
 /gate/output/root/setRootSinglesFlag 0
 /gate/output/root/setRootCoincidencesFlag 0
 
@@ -42,3 +43,22 @@
 
 # S T A R T   T H E   A C Q U I S I T I O N
 # /gate/application/startDAQ
+
+
+# T O   R U N   S I M
+# source root 5
+#
+# source /home/marco/Programs/Root/root-5.34.34/bin/thisroot.sh
+#
+# from run/ folder (~/cernbox/Universita/TOFreco/run):
+#
+# time Gate -a [folder,../tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um][time,0.01][cut,10][seed,123456789][outname,output] ../tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um/runSim.mac
+
+# T O   R U N   V I S
+# source root 5
+#
+# source /home/marco/Programs/Root/root-5.34.34/bin/thisroot.sh
+#
+# from run/ folder (~/cernbox/Universita/TOFreco/run):
+#
+# Gate --qt -a [folder,../tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um][time,0.01][cut,10][seed,123456789][outname,output] ../tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um/runVis.mac

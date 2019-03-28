@@ -26,6 +26,7 @@
 
 /gate/physics/addPhysicsList emstandard_opt3
 # /gate/physics/addProcess DecayPhysics
+/gate/physics/addProcess PositronAnnihilation  e+
 /gate/physics/addProcess RadioactiveDecay
 
 /gate/physics/processList Enabled

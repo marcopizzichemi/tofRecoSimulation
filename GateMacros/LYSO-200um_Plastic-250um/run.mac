@@ -10,6 +10,11 @@
 /control/execute {folder}/attachToSystem.mac
 /control/execute {folder}/digitizer.mac
 
+# SOURCES
+# /control/execute {folder}/SNR_source.mac
+/control/execute {folder}/NEMA_IQ_phantom.mac
+/control/execute {folder}/NEMA_IQ_source.mac
+
 # PHYSICS
 /control/execute {folder}/physics.mac
 
@@ -17,10 +22,7 @@
 /gate/run/initialize
 /gate/physics/displayCuts
 
-# SOURCES
-# /control/execute {folder}/SNR_source.mac
-/control/execute {folder}/NEMA_IQ_phantom.mac
-/control/execute {folder}/NEMA_IQ_source.mac
+
 
 /gate/geometry/rebuild
 

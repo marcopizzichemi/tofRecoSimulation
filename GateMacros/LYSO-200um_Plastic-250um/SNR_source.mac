@@ -1,3 +1,17 @@
+# S O U R C E S
+# sources will be embedded in a cylinder
+# as large as the FOV, and longer in z (in case a source longer than the scanner is needed )
+# this cylinder is created in case the sources need to be rotated
+/gate/world/daughters/name cylinderSource
+/gate/world/daughters/insert cylinder
+/gate/cylinderSource/setMaterial Air
+/gate/cylinderSource/geometry/setRmax 450 mm
+/gate/cylinderSource/geometry/setHeight 300 mm
+/gate/cylinderSource/vis/setColor blue
+/gate/cylinderSource/vis/forceWireframe
+/gate/cylinderSource/vis/setVisible 1
+
+
 # this is the line
 /gate/source/addSource line1
 /gate/source/line1/setType backtoback

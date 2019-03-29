@@ -66,13 +66,46 @@ struct enDep
 
 struct module
 {
-  int number;
   int rsectorID;
   int moduleID;
   float totalEnDep;
   float lysoEnDep;
   float plasticEnDep;
 };
+
+
+void print_event(enDep event)
+{
+  std::cout << std::endl;
+  std::cout << "localPosX   = " << event.localPosX   << std::endl;
+  std::cout << "localPosY   = " << event.localPosY   << std::endl;
+  std::cout << "localPosZ   = " << event.localPosZ   << std::endl;
+  std::cout << "primaryID   = " << event.primaryID   << std::endl;
+  std::cout << "parentID    = " << event.parentID    << std::endl;
+  std::cout << "trackID     = " << event.trackID     << std::endl;
+  std::cout << "eventID     = " << event.eventID     << std::endl;
+  std::cout << "gantryID    = " << event.gantryID    << std::endl;
+  std::cout << "rsectorID   = " << event.rsectorID   << std::endl;
+  std::cout << "moduleID    = " << event.moduleID    << std::endl;
+  std::cout << "submoduleID = " << event.submoduleID << std::endl;
+  std::cout << "crystalID   = " << event.crystalID   << std::endl;
+  std::cout << "layerID     = " << event.layerID     << std::endl;
+  std::cout << "sourceID    = " << event.sourceID    << std::endl;
+  std::cout << "time        = " << event.time        << std::endl;
+  std::cout << "edep        = " << event.edep        << std::endl;
+  std::cout << std::endl;
+}
+
+void print_module(module modToPrint)
+{
+  std::cout << std::endl;
+  std::cout << "rsectorID    = " << modToPrint.rsectorID    << std::endl;
+  std::cout << "moduleID     = " << modToPrint.moduleID     << std::endl;
+  std::cout << "totalEnDep   = " << modToPrint.totalEnDep   << std::endl;
+  std::cout << "lysoEnDep    = " << modToPrint.lysoEnDep    << std::endl;
+  std::cout << "plasticEnDep = " << modToPrint.plasticEnDep << std::endl;
+  std::cout << std::endl;
+}
 
 //function to compare deposition event struct vectors using the field time
 // to be used by std::sort
@@ -125,11 +158,13 @@ int main(int argc, char** argv)
   std::string prefixName = "";
   std::string outputName = "";
   std::string folderName = "";
+  int verbose = 0;
   static struct option longOptions[] =
   {
 			{ "input", required_argument, 0, 0 },
 			{ "output", required_argument, 0, 0 },
       { "folder", required_argument, 0, 0 },
+      { "verbose", required_argument, 0, 0 },
 			{ NULL, 0, 0, 0 }
 	};
   while(1) {
@@ -157,6 +192,9 @@ int main(int argc, char** argv)
     }
     else if (c == 0 && optionIndex == 2){
       folderName = (char *)optarg;
+    }
+    else if (c == 0 && optionIndex == 3){
+      verbose = atoi((char *)optarg);
     }
 		else
     {
@@ -415,6 +453,11 @@ int main(int argc, char** argv)
 
     if(eventsCheck != HITSeventID)
     {
+      if(verbose > 1)
+      {
+        std::cout << "EVENT "<< eventsCheck <<  "--------------------------" << std::endl;
+      }
+
       //increase counter
       eventCounter++;
       //set check to this eventID
@@ -431,6 +474,7 @@ int main(int argc, char** argv)
         //summarize the event
         // find modules hit (in our geom the module is the crystal)
         std::vector<module> modulesHIT;
+        // std::cout << "--------------------------" << std::endl;
         for(int eEvent = 0; eEvent < event.size(); eEvent++)
         {
           //save energy depo info
@@ -438,6 +482,7 @@ int main(int argc, char** argv)
           if(event[eEvent].edep) //avoid empty events, if any
           {
             //check if module already touched
+            if(verbose > 1) print_event(event[eEvent]);
             int modRef = -1;
             for(int iMod = 0; iMod < modulesHIT.size(); iMod++)
             {
@@ -456,6 +501,7 @@ int main(int argc, char** argv)
                   {
                     modulesHIT[iMod].plasticEnDep += event[eEvent].edep;
                   }
+                  if(verbose > 1) print_module(modulesHIT[iMod]);
 
                 }
               }
@@ -481,6 +527,7 @@ int main(int argc, char** argv)
                 temp_module.plasticEnDep += event[eEvent].edep;
               }
               //add to vector of modules
+              if(verbose > 1) print_module(temp_module);
               modulesHIT.push_back(temp_module);
             }
           }
@@ -501,6 +548,15 @@ int main(int argc, char** argv)
           // std::cout << "---------" << std::endl;
           coincidenceCounter++;
           int fastLevel = 0;
+
+          if(verbose > 0)
+          {
+            std::cout << "/////////////////////////////////" << std::endl;
+            print_module(modulesHIT[modIDs[0]]);
+            std::cout << "--- --- --- --- --- --- --- --- ---" << std::endl;
+            print_module(modulesHIT[modIDs[1]]);
+            std::cout << "/////////////////////////////////" << std::endl;
+          }
 
           if(modulesHIT[modIDs[0]].plasticEnDep >= 0.01)
           {

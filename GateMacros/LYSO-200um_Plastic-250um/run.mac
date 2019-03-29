@@ -12,7 +12,8 @@
 
 # PHANTOM GEOMETRY
 # /control/execute {folder}/SNR_source.mac
-/control/execute {folder}/NEMA_IQ_phantom.mac
+# /control/execute {folder}/NEMA_IQ_phantom.mac
+/control/execute {folder}/point_phantom.mac
 
 
 # PHYSICS
@@ -22,7 +23,8 @@
 /gate/run/initialize
 
 # SOURCES
-/control/execute {folder}/NEMA_IQ_source.mac
+# /control/execute {folder}/NEMA_IQ_source.mac
+/control/execute {folder}/point_source.mac
 
 /gate/physics/displayCuts
 

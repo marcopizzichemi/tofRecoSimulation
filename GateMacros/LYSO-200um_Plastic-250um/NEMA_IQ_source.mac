@@ -18,35 +18,35 @@
 /gate/source/bck_activity/gps/halfz 7.5 cm
 /gate/source/bck_activity/gps/centre 0 3 0 cm
 
-/gate/source/bck_activity/gps/Forbid NEMA_IQ
+/gate/source/bck_activity/gps/Forbid NEMA_IQ_phys
 
 #/gate/source/bck_activity/gps/Forbid BED
-/gate/source/bck_activity/gps/Forbid NEMACylinderPhantom
-/gate/source/bck_activity/gps/Forbid centercyl
-/gate/source/bck_activity/gps/Forbid centercylin
+/gate/source/bck_activity/gps/Forbid NEMACylinderPhantom_phys
+/gate/source/bck_activity/gps/Forbid centercyl_phys
+/gate/source/bck_activity/gps/Forbid centercylin_phys
 
-/gate/source/bck_activity/gps/Forbid outershell1
-/gate/source/bck_activity/gps/Forbid outershell2
-/gate/source/bck_activity/gps/Forbid outershell3
-/gate/source/bck_activity/gps/Forbid outershell4
+/gate/source/bck_activity/gps/Forbid outershell1_phys
+/gate/source/bck_activity/gps/Forbid outershell2_phys
+/gate/source/bck_activity/gps/Forbid outershell3_phys
+/gate/source/bck_activity/gps/Forbid outershell4_phys
 
-/gate/source/bck_activity/gps/Forbid sphere10
-/gate/source/bck_activity/gps/Forbid sphere10in
+/gate/source/bck_activity/gps/Forbid sphere10_phys
+/gate/source/bck_activity/gps/Forbid sphere10in_phys
 
-/gate/source/bck_activity/gps/Forbid sphere13
-/gate/source/bck_activity/gps/Forbid sphere13in
+/gate/source/bck_activity/gps/Forbid sphere13_phys
+/gate/source/bck_activity/gps/Forbid sphere13in_phys
 
-/gate/source/bck_activity/gps/Forbid sphere17
-/gate/source/bck_activity/gps/Forbid sphere17in
+/gate/source/bck_activity/gps/Forbid sphere17_phys
+/gate/source/bck_activity/gps/Forbid sphere17in_phys
 
-/gate/source/bck_activity/gps/Forbid sphere22
-/gate/source/bck_activity/gps/Forbid sphere22in
+/gate/source/bck_activity/gps/Forbid sphere22_phys
+/gate/source/bck_activity/gps/Forbid sphere22in_phys
 
-/gate/source/bck_activity/gps/Forbid sphere28
-/gate/source/bck_activity/gps/Forbid sphere28in
+/gate/source/bck_activity/gps/Forbid sphere28_phys
+/gate/source/bck_activity/gps/Forbid sphere28in_phys
 
-/gate/source/bck_activity/gps/Forbid sphere37
-/gate/source/bck_activity/gps/Forbid sphere37in
+/gate/source/bck_activity/gps/Forbid sphere37_phys
+/gate/source/bck_activity/gps/Forbid sphere37in_phys
 
 #The angular distribution of emission angles is isotropic
 /gate/source/bck_activity/gps/angtype 		iso
@@ -69,31 +69,31 @@
 /gate/source/fore_activity/gps/centre 0 3 0 cm
 
 
-/gate/source/fore_activity/gps/Forbid NEMA_IQ
+/gate/source/fore_activity/gps/Forbid NEMA_IQ_phys
 
-/gate/source/fore_activity/gps/Forbid centercyl
-/gate/source/fore_activity/gps/Forbid centercylin
+/gate/source/fore_activity/gps/Forbid centercyl_phys
+/gate/source/fore_activity/gps/Forbid centercylin_phys
 #/gate/source/fore_activity/gps/Forbid BED
-/gate/source/fore_activity/gps/Forbid NEMACylinderPhantom
+/gate/source/fore_activity/gps/Forbid NEMACylinderPhantom_phys
 
-/gate/source/fore_activity/gps/Forbid outershell1
-/gate/source/fore_activity/gps/Forbid upperinterior
-/gate/source/fore_activity/gps/Forbid outershell2
-/gate/source/fore_activity/gps/Forbid LRinterior
-/gate/source/fore_activity/gps/Forbid outershell3
-/gate/source/fore_activity/gps/Forbid LLinterior
-/gate/source/fore_activity/gps/Forbid outershell4
-/gate/source/fore_activity/gps/Forbid BXinterior
+/gate/source/fore_activity/gps/Forbid outershell1_phys
+/gate/source/fore_activity/gps/Forbid upperinterior_phys
+/gate/source/fore_activity/gps/Forbid outershell2_phys
+/gate/source/fore_activity/gps/Forbid LRinterior_phys
+/gate/source/fore_activity/gps/Forbid outershell3_phys
+/gate/source/fore_activity/gps/Forbid LLinterior_phys
+/gate/source/fore_activity/gps/Forbid outershell4_phys
+/gate/source/fore_activity/gps/Forbid BXinterior_phys
 
-/gate/source/fore_activity/gps/Forbid sphere10
-/gate/source/fore_activity/gps/Forbid sphere13
-/gate/source/fore_activity/gps/Forbid sphere17
+/gate/source/fore_activity/gps/Forbid sphere10_phys
+/gate/source/fore_activity/gps/Forbid sphere13_phys
+/gate/source/fore_activity/gps/Forbid sphere17_phys
 
-/gate/source/fore_activity/gps/Forbid sphere28
-/gate/source/fore_activity/gps/Forbid sphere28in
+/gate/source/fore_activity/gps/Forbid sphere28_phys
+/gate/source/fore_activity/gps/Forbid sphere28in_phys
 
-/gate/source/fore_activity/gps/Forbid sphere37
-/gate/source/fore_activity/gps/Forbid sphere37in
+/gate/source/fore_activity/gps/Forbid sphere37_phys
+/gate/source/fore_activity/gps/Forbid sphere37in_phys
 
 #The angular distribution of emission angles is isotropic
 /gate/source/fore_activity/gps/angtype 		iso

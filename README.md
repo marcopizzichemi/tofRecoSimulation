@@ -79,9 +79,9 @@ The parameters in input allow to change the GATE simulation without changing the
 To count how many fast, less fast and slow coincidences are produced, do
 
 ```
-./path/to/bin/fastPercentage --folder ./ --input output.root --output test.root
+./path/to/bin/fastPercentage --folder ./ --input output.root --output results.txt
 ```
-This will work on GATE Hits, so only real coincidences are taken into account.
+This will work on GATE Hits, so only real coincidences are taken into account. Results are written on terminal and in results.txt file.
 
 ### Only visualization
 

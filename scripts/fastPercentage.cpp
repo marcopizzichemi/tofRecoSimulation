@@ -370,7 +370,9 @@ int main(int argc, char** argv)
   float g2_enDepMat0;
   float g2_enDepMat1;
   //file
-  TFile *outFile = new TFile(outputName.c_str(),"RECREATE");
+  std::ofstream outFile;
+  outFile.open(outputName.c_str(), std::ofstream::out);
+  // TFile *outFile = new TFile(outputName.c_str(),"RECREATE");
   // declare ttree
   TTree *tree = new TTree("tree","tree of data");
   // branch ttree
@@ -659,9 +661,33 @@ int main(int argc, char** argv)
   std::cout << "Fast coincidences fraction                  = " << (float)fastCoinc / (float) coincidenceCounter << std::endl;
   std::cout << "Less fast coincidences fraction             = " << (float) lessFastCoinc / (float) coincidenceCounter << std::endl;
   std::cout << "Slow coincidences fraction                  = " << (float) slowCoinc / (float) coincidenceCounter << std::endl;
-  outFile->cd();
-  // tree->Write();
-  outFile->Close();
+
+  // write the same to txt file
+  outFile << "# ---- LEGEND                                  " << std::endl;
+  outFile << "# Number of hits                               " << std::endl;
+  outFile << "# Number of events                             " << std::endl;
+  outFile << "# Events with two elements with > 400 keV      " << std::endl;
+  outFile << "# More then 10 KeV in both plastics            " << std::endl;
+  outFile << "# More then 10 Kev in only one plastic         " << std::endl;
+  outFile << "# Less then 10 keV in both plastic             " << std::endl;
+  outFile << "# Fast coincidences fraction                   " << std::endl;
+  outFile << "# Less fast coincidences fraction              " << std::endl;
+  outFile << "# Slow coincidences fraction                   " << std::endl;
+  outFile << HITSnentries << std::endl;
+  outFile << eventCounter << std::endl;
+  outFile << coincidenceCounter << std::endl;
+  outFile << fastCoinc << std::endl;
+  outFile << lessFastCoinc << std::endl;
+  outFile << slowCoinc << std::endl;
+  outFile << (float)fastCoinc / (float) coincidenceCounter << std::endl;
+  outFile << (float) lessFastCoinc / (float) coincidenceCounter << std::endl;
+  outFile << (float) slowCoinc / (float) coincidenceCounter << std::endl;
+  outFile.close();
+
+  std::cout << std::endl;
+  std::cout << "Results saved into text file " << outputName.c_str() << std::endl;
+  std::cout << std::endl;
+
   // --------------------------------//
 
   return 0;

@@ -112,7 +112,7 @@ the GATE macros folder
 the simulation time (GATE time) in seconds
 the production cut, in microns
 the random seed
-the final output file, i.e. the full path + file name where the output file will be copied
+the final output file, i.e. the full path + file name where the output file will be written
 ```
 
 Of course you need to change seed in every line, in general, and also the final output name, otherwise it will be overwritten. After this, you just need to run

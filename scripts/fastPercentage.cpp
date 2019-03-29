@@ -624,12 +624,12 @@ int main(int argc, char** argv)
 
     //LOOP COUNTER
     // counterAnalysis++;
-    // int perc = ((100*( (float) i))/( (float) HITSnentries));
-    // if( (perc % 5) == 0 )
-    // {
-    //   std::cout << "\r";
-    //   std::cout << perc << "% done... ";
-    // }
+    int perc = ((100*( (float) i))/( (float) HITSnentries));
+    if( (perc % 5) == 0 )
+    {
+      std::cout << "\r";
+      std::cout << perc << "% done... ";
+    }
   }
   std::cout << std::endl;
   // std::cout << "\r";

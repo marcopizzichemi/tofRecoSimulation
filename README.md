@@ -6,7 +6,7 @@ GATE simulation of full ring for hybrid detector, plus some script to analyze da
 
 ### Instructions for installation on a personal PC
 
-You need to have GATE up and running, which means also ROOT and Geant4. 
+You need to have GATE up and running, which means also ROOT and Geant4.
 To download (and compile the small script) execute the following commands:
 
 ```
@@ -14,21 +14,21 @@ git clone https://github.com/marcopizzichemi/tofRecoSimulation.git
 cd tofRecoSimulation
 ./deploy
 ```
-This will create an executable tofReco in bin/ folder
+This will create two executables in bin/ folder
 
 ### Instructions for installation on lxplus (updated after decommissioning of LSF)
 
-Again, you need a GATE version up and running. One combination that was found to work on lxplus is 
+Again, you need a GATE version up and running. One combination that was found to work on lxplus is
 
 ```
 GATE 8.1
 Geant 4.10.03
-ROOT 6.06.08 
-g++ 4.9.1 
+ROOT 6.06.08
+g++ 4.9.1
 ```
 This is an extremely delicate combination...
 
-To setup everything and compile GATE from source, do 
+To setup everything and compile GATE from source, do
 
 ```
 wget http://www.opengatecollaboration.org/sites/default/files/gate_v8.1.p01.tar.gz
@@ -50,7 +50,7 @@ git clone https://github.com/marcopizzichemi/tofRecoSimulation.git
 cd tofRecoSimulation
 ./deploy lxplus
 ```
-Just specify lxplus do deploy, so the proper source commands are executed
+Just specify lxplus to deploy, so the proper source commands are executed
 
 ## Run
 
@@ -59,13 +59,13 @@ Just specify lxplus do deploy, so the proper source commands are executed
 To run a single instance of simulation, once GATE is installed, do
 
 ```
-time Gate -a [folder,/path/to/Gate/macros/folder][time,3][cut,10][seed,123456789] /path/to/Gate/macros/folder/runSim.mac
+time Gate -a [folder,/path/to/Gate/macros/folder][time,3][cut,10][seed,123456789][outname,output] /path/to/Gate/macros/folder/runSim.mac
 ```
-where 
+where
 ```
 /path/to/Gate/macros/folder  -> path to the folder where runSim.mac is
 time                         -> simulation time (setTimeStop in GATE), in seconds
-cut                          -> production cut for gammas, electrons and positrons, in microns 
+cut                          -> production cut for gammas, electrons and positrons, in microns
 seed                         -> seed for the random number generator
 
 ```
@@ -76,34 +76,35 @@ The parameters in input allow to change the GATE simulation without changing the
 
 ### Run simple analysis after simulation
 
-To count how many fast, less fast and slow coincidences are produced, do 
+To count how many fast, less fast and slow coincidences are produced, do
 
 ```
-./path/to/bin/tofReco --input sim{cut}um.root --output out.root
+./path/to/bin/fastPercentage --folder ./ --input output.root --output test.root
 ```
+This will work on GATE Hits, so only real coincidences are taken into account.
 
 ### Only visualization
 
-To run just a visual interface, do 
+To run just a visual interface, do
 
 ```
-Gate --qt -a [folder,/path/to/Gate/macros/folder][time,3][cut,10][seed,123456789] /path/to/Gate/macros/folder/runVis.mac
+Gate --qt -a [folder,/path/to/Gate/macros/folder][time,3][cut,10][seed,123456789][outname,output] /path/to/Gate/macros/folder/runVis.mac
 ```
 
-in this case, time, cut, and seed do not really matter.
+in this case, time, cut, seed and outname do not really matter.
 
 
 ### Condor
 
-The scripts needed for submitting in condor on lxplus are in the condor/ folder. You need to 
+The scripts needed for submitting in condor on lxplus are in the condor/ folder. You need to
 ```
-Create a folder somewhere 
+Create a folder somewhere
 copy the jobs.sub and run_script.su file there
 Create 3 subdirs, err, log, out
-properly set the variables in args.txt. 
+properly set the variables in args.txt.
 ```
 
-Each line in args.txt is a condor job. You need to specify in each line 
+Each line in args.txt is a condor job. You need to specify in each line
 
 ```
 the GATE executable file, with full path
@@ -114,13 +115,8 @@ the random seed
 the final output file, i.e. the full path + file name where the output file will be copied
 ```
 
-Of course you need to change seed in every line, in general, and also the final output name, otherwise it will be overwritte. After this, you just need to run
+Of course you need to change seed in every line, in general, and also the final output name, otherwise it will be overwritten. After this, you just need to run
 
 ```
 condor_submit jobs.sub
 ```
-
-
-
-
-

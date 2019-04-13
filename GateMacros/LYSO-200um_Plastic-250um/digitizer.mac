@@ -1,4 +1,5 @@
 /gate/digitizer/Singles/insert adder
+
 /gate/digitizer/Singles/insert readout
 /gate/digitizer/Singles/readout/setPolicy TakeEnergyWinner
 /gate/digitizer/Singles/readout/setDepth 2
@@ -29,12 +30,12 @@
 /gate/digitizer/Singles/insert timeResolution 
 # 130 / sqrt(2) 
 /gate/digitizer/Singles/timeResolution/setTimeResolution 91.92 ps
-/gate/digitizer/Singles/timeResolution/chooseDTVolume LYSO_cry 
+/gate/digitizer/Singles/timeResolution/chooseTRVolume LYSO_cry 
 
 /gate/digitizer/Singles/insert timeResolution
 # 50 / sqrt(2)
 /gate/digitizer/Singles/timeResolution/setTimeResolution 35.35 ps
-/gate/digitizer/Singles/timeResolution/chooseDTVolume Plastic_cry
+/gate/digitizer/Singles/timeResolution/chooseTRVolume Plastic_cry
 
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 
@@ -46,7 +47,7 @@
 
 /gate/digitizer/name Coincidences
 /gate/digitizer/insert coincidenceSorter
-/gate/digitizer/Coincidences/setWindow 0.1 ns
+/gate/digitizer/Coincidences/setWindow 4.5 ns
 /gate/digitizer/Coincidences/minSectorDifference 1
 
 /gate/digitizer/Coincidences/MultiplesPolicy takeAllGoods

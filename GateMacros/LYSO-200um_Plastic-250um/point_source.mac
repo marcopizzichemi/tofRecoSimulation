@@ -1,5 +1,5 @@
 /gate/source/addSource	point_activity
-/gate/source/point_activity/setActivity	43000000. becquerel
+/gate/source/point_activity/setActivity	25000000. becquerel
 /gate/source/point_activity/gps/particle e+
 /gate/source/point_activity/setForcedUnstableFlag true
 /gate/source/point_activity/setForcedHalfLife 6586.2 s

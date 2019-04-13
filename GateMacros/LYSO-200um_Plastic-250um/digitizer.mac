@@ -4,6 +4,7 @@
 /gate/digitizer/Singles/readout/setPolicy TakeEnergyWinner
 /gate/digitizer/Singles/readout/setDepth 2
 
+## TODO: Fix Energy resolution to be per layer. 
 
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 #                                                                 #
@@ -39,15 +40,16 @@
 
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 
+## TODO: Threshold should ber per layer. 
 
 /gate/digitizer/Singles/insert thresholder
 /gate/digitizer/Singles/thresholder/setThreshold 300. keV
 /gate/digitizer/Singles/insert upholder
 /gate/digitizer/Singles/upholder/setUphold 700. keV
 
-/gate/digitizer/name Coincidences
-/gate/digitizer/insert coincidenceSorter
+#/gate/digitizer/name Coincidences
+#/gate/digitizer/insert coincidenceSorter
 /gate/digitizer/Coincidences/setWindow 4.5 ns
-/gate/digitizer/Coincidences/minSectorDifference 1
+/gate/digitizer/Coincidences/minSectorDifference 186
 
-/gate/digitizer/Coincidences/MultiplesPolicy takeAllGoods
+#/gate/digitizer/Coincidences/MultiplesPolicy takeAllGoods

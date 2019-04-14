@@ -1,8 +1,8 @@
 # W O R L D
-/gate/world/geometry/setXLength 250. cm
-/gate/world/geometry/setYLength 250. cm
-/gate/world/geometry/setZLength 250. cm
-/gate/world/setMaterial Air
+/gate/world/geometry/setXLength 100. cm
+/gate/world/geometry/setYLength 100. cm
+/gate/world/geometry/setZLength 100. cm
+#/gate/world/setMaterial Air
 /gate/world/vis/forceWireframe
 /gate/world/vis/setColor white
 /gate/world/vis/setVisible 1

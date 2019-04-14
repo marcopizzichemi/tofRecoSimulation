@@ -5,10 +5,23 @@
 /gate/source/point_activity/setForcedHalfLife 6586.2 s
 /gate/source/point_activity/gps/energytype Fluor18
 
+
 /gate/source/point_activity/gps/type Volume
-/gate/source/point_activity/gps/shape Sphere
-/gate/source/point_activity/gps/radius 1 mm
-/gate/source/point_activity/gps/centre 0. 0. 0. cm
+/gate/source/point_activity/gps/shape Cylinder
+/gate/source/point_activity/gps/radius 0.05 cm
+/gate/source/point_activity/gps/halfz 75.0 mm
 /gate/source/point_activity/gps/angtype iso
+/gate/source/point_activity/gps/centre 0.0 0.0 0. cm
+#/gate/source/point_activity/visualize 10000 blue 2
+
+/gate/source/point_activity/gps/mintheta 90. deg 
+/gate/source/point_activity/gps/maxtheta 90. deg 
+
+
+#/gate/source/point_activity/gps/type Volume
+#/gate/source/point_activity/gps/shape Sphere
+#/gate/source/point_activity/gps/radius 1 mm
+#/gate/source/point_activity/gps/centre 0. 0. 0. cm
+#/gate/source/point_activity/gps/angtype iso
 
 /gate/source/point_activity/attachTo pointSource

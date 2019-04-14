@@ -42,10 +42,23 @@
 
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 
-## TODO: Threshold should ber per layer. 
 
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#              M O D U L A R    T H R E S H O L D E R             #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+/gate/digitizer/Singles/name thresholderLYSO
 /gate/digitizer/Singles/insert thresholder
-/gate/digitizer/Singles/thresholder/setThreshold 300. keV
+/gate/digitizer/Singles/thresholderLYSO/setThreshold 300. keV
+/gate/digitizer/Singles/thresholderLYSO/chooseTHVolume LYSO_cry 
+
+/gate/digitizer/Singles/name thresholderPlastic
+/gate/digitizer/Singles/insert thresholder
+/gate/digitizer/Singles/thresholderPlastic/setThreshold 10. keV
+/gate/digitizer/Singles/thresholderPlastic/chooseTHVolume Plastic_cry 
+
 /gate/digitizer/Singles/insert upholder
 /gate/digitizer/Singles/upholder/setUphold 700. keV
 

@@ -1,8 +1,44 @@
+# By default the adder is only applied at the lowest
+# level. We have to move that in the module. 
 /gate/digitizer/Singles/insert adder
+#/gate/digitizer/Singles/adder/setDepth 3
+
+#
+# The energy resolution should be set before the readout. - Maybe 
+#
+/gate/digitizer/Singles/insert blurring 
+/gate/digitizer/Singles/blurring/setResolution 0.11
+/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
 
 /gate/digitizer/Singles/insert readout
-/gate/digitizer/Singles/readout/setPolicy TakeEnergyWinner
+/gate/digitizer/Singles/readout/setPolicy TakeLayerWinner
+# The module is one meta-crystal
 /gate/digitizer/Singles/readout/setDepth 2
+/gate/digitizer/Singles/readout/setWinningEnergy 0.100 keV
+/gate/digitizer/Singles/readout/setLayerName Plastic_cry
+
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#              M O D U L A R    T H R E S H O L D E R             #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+#/gate/digitizer/Singles/name thresholderLYSO
+#/gate/digitizer/Singles/insert thresholder
+#/gate/digitizer/Singles/thresholderLYSO/setThreshold 300. keV
+#/gate/digitizer/Singles/thresholderLYSO/chooseTHVolume LYSO_cry 
+
+#/gate/digitizer/Singles/name thresholderPlastic
+#/gate/digitizer/Singles/insert thresholder
+#/gate/digitizer/Singles/thresholderPlastic/setThreshold 10. keV
+#/gate/digitizer/Singles/thresholderPlastic/chooseTHVolume Plastic_cry 
+
+
+/gate/digitizer/Singles/insert thresholder
+/gate/digitizer/Singles/thresholder/setThreshold 450. keV
+/gate/digitizer/Singles/insert upholder
+/gate/digitizer/Singles/upholder/setUphold 650. keV
 
 ## TODO: Fix Energy resolution to be per layer. 
 
@@ -43,24 +79,7 @@
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 
 
-#-------------------oooooOOOOO00000OOOOOooooo---------------------#
-#                                                                 #
-#              M O D U L A R    T H R E S H O L D E R             #
-#                                                                 #
-#-------------------oooooOOOOO00000OOOOOooooo---------------------#
 
-/gate/digitizer/Singles/name thresholderLYSO
-/gate/digitizer/Singles/insert thresholder
-/gate/digitizer/Singles/thresholderLYSO/setThreshold 300. keV
-/gate/digitizer/Singles/thresholderLYSO/chooseTHVolume LYSO_cry 
-
-/gate/digitizer/Singles/name thresholderPlastic
-/gate/digitizer/Singles/insert thresholder
-/gate/digitizer/Singles/thresholderPlastic/setThreshold 10. keV
-/gate/digitizer/Singles/thresholderPlastic/chooseTHVolume Plastic_cry 
-
-/gate/digitizer/Singles/insert upholder
-/gate/digitizer/Singles/upholder/setUphold 700. keV
 
 #/gate/digitizer/name Coincidences
 #/gate/digitizer/insert coincidenceSorter

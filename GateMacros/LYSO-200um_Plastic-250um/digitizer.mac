@@ -3,19 +3,16 @@
 /gate/digitizer/Singles/insert adder
 #/gate/digitizer/Singles/adder/setDepth 3
 
-#
-# The energy resolution should be set before the readout. - Maybe 
-#
-/gate/digitizer/Singles/insert blurring 
-/gate/digitizer/Singles/blurring/setResolution 0.11
-/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
-
 /gate/digitizer/Singles/insert readout
 /gate/digitizer/Singles/readout/setPolicy TakeLayerWinner
 # The module is one meta-crystal
 /gate/digitizer/Singles/readout/setDepth 2
-/gate/digitizer/Singles/readout/setWinningEnergy 0.100 keV
+/gate/digitizer/Singles/readout/setWinningEnergy 100. keV
 /gate/digitizer/Singles/readout/setLayerName Plastic_cry
+
+/gate/digitizer/Singles/insert blurring 
+/gate/digitizer/Singles/blurring/setResolution 0.11
+/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
 
 
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
@@ -36,7 +33,7 @@
 
 
 /gate/digitizer/Singles/insert thresholder
-/gate/digitizer/Singles/thresholder/setThreshold 450. keV
+/gate/digitizer/Singles/thresholder/setThreshold 300. keV
 /gate/digitizer/Singles/insert upholder
 /gate/digitizer/Singles/upholder/setUphold 650. keV
 

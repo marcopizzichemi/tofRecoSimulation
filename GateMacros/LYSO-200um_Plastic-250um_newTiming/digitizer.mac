@@ -61,19 +61,37 @@
 # volume name. Similar to the _deadtime_ module. The medium speed pulses will
 # be created automatically by combining the two time resolutions
 
-/gate/digitizer/Singles/name timeResolutionLYSO
-/gate/digitizer/Singles/insert timeResolution
+#/gate/digitizer/Singles/name timeResolutionLYSO
+#/gate/digitizer/Singles/insert timeResolution
 # 130 / sqrt(2)
-/gate/digitizer/Singles/timeResolutionLYSO/setTimeResolution 91.92 ps
-/gate/digitizer/Singles/timeResolutionLYSO/chooseTRVolume LYSO_cry
+#/gate/digitizer/Singles/timeResolutionLYSO/setTimeResolution 91.92 ps
+#/gate/digitizer/Singles/timeResolutionLYSO/chooseTRVolume LYSO_cry
 
-/gate/digitizer/Singles/name timeResolutionPlastic
-/gate/digitizer/Singles/insert timeResolution
+#/gate/digitizer/Singles/name timeResolutionPlastic
+#/gate/digitizer/Singles/insert timeResolution
 # 50 / sqrt(2)
-/gate/digitizer/Singles/timeResolutionPlastic/setTimeResolution 35.35 ps
-/gate/digitizer/Singles/timeResolutionPlastic/chooseTRVolume Plastic_cry
+#/gate/digitizer/Singles/timeResolutionPlastic/setTimeResolution 35.35 ps
+#/gate/digitizer/Singles/timeResolutionPlastic/chooseTRVolume Plastic_cry
+
+
 
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#                       O P T I O N   [C]                         #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+/gate/digitizer/Singles/name newTiming
+/gate/digitizer/Singles/insert multTimeResolution 
+
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 7.07 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 35.35 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 70.7 ps
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+
+
 
 
 

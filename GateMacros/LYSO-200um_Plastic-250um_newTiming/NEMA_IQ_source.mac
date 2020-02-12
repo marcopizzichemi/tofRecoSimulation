@@ -1,0 +1,119 @@
+# Nikos Efthimiou, Univ. of Hull
+# 20 November 2017
+
+### Background activity in phantom
+
+# Background Activity
+/gate/source/addSource	bck_activity
+/gate/source/bck_activity/setActivity	43000000. becquerel
+/gate/source/bck_activity/gps/particle e+
+/gate/source/bck_activity/setForcedUnstableFlag true
+/gate/source/bck_activity/setForcedHalfLife 6586.2 s
+/gate/source/bck_activity/gps/energytype Fluor18
+/gate/source/bck_activity/attachTo NEMA_IQ
+/gate/source/bck_activity/gps/type 		Volume
+/gate/source/bck_activity/gps/shape Para
+/gate/source/bck_activity/gps/halfx 14.7 cm
+/gate/source/bck_activity/gps/halfy 11.7 cm
+/gate/source/bck_activity/gps/halfz 7.5 cm
+/gate/source/bck_activity/gps/centre 0 3 0 cm
+
+/gate/source/bck_activity/gps/Forbid NEMA_IQ_phys
+
+#/gate/source/bck_activity/gps/Forbid BED
+/gate/source/bck_activity/gps/Forbid NEMACylinderPhantom_phys
+/gate/source/bck_activity/gps/Forbid centercyl_phys
+/gate/source/bck_activity/gps/Forbid centercylin_phys
+
+/gate/source/bck_activity/gps/Forbid outershell1_phys
+/gate/source/bck_activity/gps/Forbid outershell2_phys
+/gate/source/bck_activity/gps/Forbid outershell3_phys
+/gate/source/bck_activity/gps/Forbid outershell4_phys
+
+/gate/source/bck_activity/gps/Forbid sphere10_phys
+/gate/source/bck_activity/gps/Forbid sphere10in_phys
+
+/gate/source/bck_activity/gps/Forbid sphere13_phys
+/gate/source/bck_activity/gps/Forbid sphere13in_phys
+
+/gate/source/bck_activity/gps/Forbid sphere17_phys
+/gate/source/bck_activity/gps/Forbid sphere17in_phys
+
+/gate/source/bck_activity/gps/Forbid sphere22_phys
+/gate/source/bck_activity/gps/Forbid sphere22in_phys
+
+/gate/source/bck_activity/gps/Forbid sphere28_phys
+/gate/source/bck_activity/gps/Forbid sphere28in_phys
+
+/gate/source/bck_activity/gps/Forbid sphere37_phys
+/gate/source/bck_activity/gps/Forbid sphere37in_phys
+
+#The angular distribution of emission angles is isotropic
+/gate/source/bck_activity/gps/angtype 		iso
+/gate/source/bck_activity/visualize 		40000 blue 2
+
+
+# Foreground Activity
+/gate/source/addSource				fore_activity
+/gate/source/fore_activity/setActivity	215000 becquerel
+/gate/source/fore_activity/gps/particle e+
+/gate/source/fore_activity/setForcedUnstableFlag true
+/gate/source/fore_activity/setForcedHalfLife 6586.2 s
+/gate/source/fore_activity/gps/energytype Fluor18
+/gate/source/fore_activity/attachTo NEMA_IQ
+/gate/source/fore_activity/gps/type Volume
+/gate/source/fore_activity/gps/shape Para
+/gate/source/fore_activity/gps/halfx 14.7 cm
+/gate/source/fore_activity/gps/halfy 11.7 cm
+/gate/source/fore_activity/gps/halfz 7.5 cm
+/gate/source/fore_activity/gps/centre 0 3 0 cm
+
+
+/gate/source/fore_activity/gps/Forbid NEMA_IQ_phys
+
+/gate/source/fore_activity/gps/Forbid centercyl_phys
+/gate/source/fore_activity/gps/Forbid centercylin_phys
+#/gate/source/fore_activity/gps/Forbid BED
+/gate/source/fore_activity/gps/Forbid NEMACylinderPhantom_phys
+
+/gate/source/fore_activity/gps/Forbid outershell1_phys
+/gate/source/fore_activity/gps/Forbid upperinterior_phys
+/gate/source/fore_activity/gps/Forbid outershell2_phys
+/gate/source/fore_activity/gps/Forbid LRinterior_phys
+/gate/source/fore_activity/gps/Forbid outershell3_phys
+/gate/source/fore_activity/gps/Forbid LLinterior_phys
+/gate/source/fore_activity/gps/Forbid outershell4_phys
+/gate/source/fore_activity/gps/Forbid BXinterior_phys
+
+/gate/source/fore_activity/gps/Forbid sphere10_phys
+/gate/source/fore_activity/gps/Forbid sphere13_phys
+/gate/source/fore_activity/gps/Forbid sphere17_phys
+
+/gate/source/fore_activity/gps/Forbid sphere28_phys
+/gate/source/fore_activity/gps/Forbid sphere28in_phys
+
+/gate/source/fore_activity/gps/Forbid sphere37_phys
+/gate/source/fore_activity/gps/Forbid sphere37in_phys
+
+#The angular distribution of emission angles is isotropic
+/gate/source/fore_activity/gps/angtype 		iso
+#/gate/source/fore_activity/visualize 		20000 red 2
+
+/gate/source/addSource F18LineSource
+/gate/source/F18LineSource/setActivity 58400000 becquerel
+/gate/source/F18LineSource/gps/particle e+
+/gate/source/F18LineSource/setForcedUnstableFlag true
+/gate/source/F18LineSource/setForcedHalfLife 6586.2 s
+/gate/source/F18LineSource/gps/energytype Fluor18
+/gate/source/F18LineSource/gps/type Volume
+/gate/source/F18LineSource/gps/shape Cylinder
+/gate/source/F18LineSource/gps/radius 1.6 mm
+/gate/source/F18LineSource/gps/halfz 350.0 mm
+/gate/source/F18LineSource/gps/angtype iso
+/gate/source/F18LineSource/gps/centre 0. -45.0 460. mm
+#/gate/source/F18LineSource/visualize 20000 yellow 3
+
+/gate/source/list
+
+##########################################################################
+##########################################################################

@@ -1,0 +1,105 @@
+# W O R L D
+/gate/world/geometry/setXLength 100. cm
+/gate/world/geometry/setYLength 100. cm
+/gate/world/geometry/setZLength 100. cm
+#/gate/world/setMaterial Air
+/gate/world/vis/forceWireframe
+/gate/world/vis/setColor white
+/gate/world/vis/setVisible 1
+
+# SET type of PET system and dimensions
+/gate/world/daughters/name cylindricalPET
+/gate/world/daughters/insert cylinder
+/gate/cylindricalPET/setMaterial Air
+/gate/cylindricalPET/geometry/setRmax 480 mm
+/gate/cylindricalPET/geometry/setRmin 450 mm
+/gate/cylindricalPET/geometry/setHeight 150 mm
+/gate/cylindricalPET/vis/forceWireframe
+/gate/cylindricalPET/vis/setVisible 1
+
+# R S E C T O R
+/gate/cylindricalPET/daughters/name rsector
+/gate/cylindricalPET/daughters/insert box
+/gate/rsector/geometry/setXLength 15 mm
+/gate/rsector/geometry/setYLength 3.76 mm
+/gate/rsector/geometry/setZLength 150.4 mm
+/gate/rsector/placement/setTranslation 457.5 0 0 mm
+/gate/rsector/setMaterial Air
+/gate/rsector/vis/forceWireframe
+/gate/rsector/vis/setColor green
+/gate/rsector/vis/setVisible 1
+
+# M O D U L E
+/gate/rsector/daughters/name module
+/gate/rsector/daughters/insert box
+/gate/module/geometry/setXLength 15. mm
+/gate/module/geometry/setYLength 3.76 mm
+/gate/module/geometry/setZLength 3.76 mm
+/gate/module/setMaterial Air
+/gate/module/vis/forceWireframe
+/gate/module/vis/setColor gray
+/gate/module/vis/setVisible 1
+
+# S U B M O D U L E
+/gate/module/daughters/name submodule
+/gate/module/daughters/insert box
+/gate/submodule/geometry/setXLength 15. mm
+/gate/submodule/geometry/setYLength 3.76 mm
+/gate/submodule/geometry/setZLength 3.76 mm
+/gate/submodule/setMaterial Air
+/gate/submodule/vis/forceWireframe
+/gate/submodule/vis/setColor blue
+/gate/submodule/vis/setVisible 0
+
+# C R Y S T A L
+/gate/submodule/daughters/name crystal
+/gate/submodule/daughters/insert box
+/gate/crystal/geometry/setXLength 15. mm
+/gate/crystal/geometry/setYLength 0.47 mm
+/gate/crystal/geometry/setZLength 3.76 mm
+/gate/crystal/setMaterial Air
+/gate/crystal/vis/forceWireframe
+/gate/crystal/vis/setColor magenta
+/gate/crystal/vis/setVisible 0
+
+# L A Y E R (s)
+/gate/crystal/daughters/name LYSO_cry
+/gate/crystal/daughters/insert box
+/gate/LYSO_cry/geometry/setXLength 15. mm
+/gate/LYSO_cry/geometry/setYLength 0.2 mm
+/gate/LYSO_cry/geometry/setZLength 3.75 mm
+/gate/LYSO_cry/placement/setTranslation 0 0.130 0 mm
+/gate/LYSO_cry/setMaterial LYSO
+# /gate/LYSO/vis/forceWireframe
+/gate/LYSO_cry/vis/setColor yellow
+/gate/LYSO_cry/vis/setVisible 0
+
+/gate/crystal/daughters/name Plastic_cry
+/gate/crystal/daughters/insert box
+/gate/Plastic_cry/geometry/setXLength 15. mm
+/gate/Plastic_cry/geometry/setYLength 0.25 mm
+/gate/Plastic_cry/geometry/setZLength 3.75 mm
+/gate/Plastic_cry/placement/setTranslation 0 -0.105 0 mm
+/gate/Plastic_cry/setMaterial Plastic
+# /gate/Plastic/vis/forceWireframe
+/gate/Plastic_cry/vis/setColor cyan
+/gate/Plastic_cry/vis/setVisible 0
+
+
+# R E P E A T C R Y S T A L
+/gate/crystal/repeaters/insert cubicArray
+/gate/crystal/cubicArray/setRepeatNumberY 8
+/gate/crystal/cubicArray/setRepeatNumberZ 1
+/gate/crystal/cubicArray/setRepeatVector 0. 0.47 0 mm
+
+# R E P E A T M O D U L E
+/gate/module/repeaters/insert cubicArray
+/gate/module/cubicArray/setRepeatNumberZ 40
+/gate/module/cubicArray/setRepeatNumberY 1
+/gate/module/cubicArray/setRepeatVector 0. 0 3.76 mm
+
+# R E P E A T R S E C T O R
+/gate/rsector/repeaters/insert ring
+# /gate/rsector/ring/setRepeatNumber 1
+/gate/rsector/ring/setRepeatNumber 751
+# /gate/rsector/ring/setRepeatNumber 10

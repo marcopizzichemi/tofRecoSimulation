@@ -1,0 +1,9 @@
+/gate/world/daughters/name pointSource
+/gate/world/daughters/insert cylinder
+/gate/pointSource/setMaterial Plastic
+/gate/pointSource/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/pointSource/geometry/setRmax  5 mm
+/gate/pointSource/geometry/setHeight  150 mm
+/gate/pointSource/vis/forceSolid
+/gate/pointSource/vis/setColor red
+/gate/pointSource/attachPhantomSD

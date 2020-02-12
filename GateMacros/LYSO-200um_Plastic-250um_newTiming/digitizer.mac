@@ -4,7 +4,7 @@
 #/gate/digitizer/Singles/adder/setDepth 3
 
 /gate/digitizer/Singles/insert readout
-/gate/digitizer/Singles/readout/setPolicy TakeLayerWinner
+/gate/digitizer/Singles/readout/setPolicy TakeEnergyWinner
 # The module is one meta-crystal
 /gate/digitizer/Singles/readout/setDepth 2
 /gate/digitizer/Singles/readout/setWinningEnergy 100. keV

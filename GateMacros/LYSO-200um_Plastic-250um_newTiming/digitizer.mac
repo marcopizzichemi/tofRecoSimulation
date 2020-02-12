@@ -85,8 +85,15 @@
 /gate/digitizer/Singles/insert multTimeResolution 
 
 /gate/digitizer/Singles/newTiming/setMultTimeResolution 7.07 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.33333333
 /gate/digitizer/Singles/newTiming/setMultTimeResolution 35.35 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.33333333
 /gate/digitizer/Singles/newTiming/setMultTimeResolution 70.7 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.33333333
+
+#/gate/digitizer/Singles/newTiming/setMultTimeResolution 7.07 ps
+#/gate/digitizer/Singles/newTiming/setMultTimeResolution 35.35 ps
+#/gate/digitizer/Singles/newTiming/setMultTimeResolution 70.7 ps
 
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 

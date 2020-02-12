@@ -1,0 +1,64 @@
+# W O R L D
+/gate/world/geometry/setXLength 250. cm
+/gate/world/geometry/setYLength 250. cm
+/gate/world/geometry/setZLength 250. cm
+/gate/world/setMaterial Air
+/gate/world/vis/forceWireframe
+/gate/world/vis/setColor white
+/gate/world/vis/setVisible 1
+
+# SET type of PET system and dimensions
+/gate/world/daughters/name cylindricalPET
+/gate/world/daughters/insert cylinder
+/gate/cylindricalPET/setMaterial Air
+/gate/cylindricalPET/geometry/setRmax 480 mm
+/gate/cylindricalPET/geometry/setRmin 450 mm
+/gate/cylindricalPET/geometry/setHeight 150 mm
+/gate/cylindricalPET/vis/forceWireframe
+/gate/cylindricalPET/vis/setVisible 1
+
+# R S E C T O R
+/gate/cylindricalPET/daughters/name rsector
+/gate/cylindricalPET/daughters/insert box
+/gate/rsector/geometry/setXLength 20 mm
+/gate/rsector/geometry/setYLength 3.76 mm
+/gate/rsector/geometry/setZLength 150.4 mm
+/gate/rsector/placement/setTranslation 457.5 0 0 mm
+/gate/rsector/setMaterial Air
+/gate/rsector/vis/forceWireframe
+/gate/rsector/vis/setColor green
+/gate/rsector/vis/setVisible 1
+
+# M O D U L E
+/gate/rsector/daughters/name module
+/gate/rsector/daughters/insert box
+/gate/module/geometry/setXLength 20. mm
+/gate/module/geometry/setYLength 3.76 mm
+/gate/module/geometry/setZLength 3.76 mm
+/gate/module/setMaterial Air
+/gate/module/vis/forceWireframe
+/gate/module/vis/setColor gray
+/gate/module/vis/setVisible 0
+
+# S U B M O D U L E
+/gate/module/daughters/name submodule
+/gate/module/daughters/insert box
+/gate/submodule/geometry/setXLength 20. mm
+/gate/submodule/geometry/setYLength 3.75 mm
+/gate/submodule/geometry/setZLength 3.75 mm
+/gate/submodule/setMaterial BGO
+/gate/submodule/vis/forceWireframe
+/gate/submodule/vis/setColor blue
+/gate/submodule/vis/setVisible 0
+
+# R E P E A T M O D U L E
+/gate/module/repeaters/insert cubicArray
+/gate/module/cubicArray/setRepeatNumberZ 40
+/gate/module/cubicArray/setRepeatNumberY 1
+/gate/module/cubicArray/setRepeatVector 0. 0 3.76 mm
+
+# R E P E A T R S E C T O R
+/gate/rsector/repeaters/insert ring
+# /gate/rsector/ring/setRepeatNumber 1
+/gate/rsector/ring/setRepeatNumber 751
+#/gate/rsector/ring/setRepeatNumber 10

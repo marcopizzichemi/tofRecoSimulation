@@ -1,0 +1,50 @@
+/gate/digitizer/Singles/insert adder
+/gate/digitizer/Singles/insert readout
+/gate/digitizer/Singles/readout/setPolicy TakeEnergyWinner
+/gate/digitizer/Singles/readout/setDepth 3
+
+/gate/digitizer/Singles/insert blurring
+/gate/digitizer/Singles/blurring/setResolution 0.11
+/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
+
+
+/gate/digitizer/Singles/insert thresholder
+/gate/digitizer/Singles/thresholder/setThreshold 300. keV
+/gate/digitizer/Singles/insert upholder
+/gate/digitizer/Singles/upholder/setUphold 700. keV
+
+
+
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#                       O P T I O N   [C]                         #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+/gate/digitizer/Singles/name newTiming
+/gate/digitizer/Singles/insert multTimeResolution 
+
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 7.07 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.33333333
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 35.35 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.33333333
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 70.7 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.33333333
+
+#/gate/digitizer/Singles/newTiming/setMultTimeResolution 7.07 ps
+#/gate/digitizer/Singles/newTiming/setMultTimeResolution 35.35 ps
+#/gate/digitizer/Singles/newTiming/setMultTimeResolution 70.7 ps
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+
+
+
+
+/gate/digitizer/name Coincidences
+/gate/digitizer/insert coincidenceSorter
+/gate/digitizer/Coincidences/setWindow 4.5 ns
+/gate/digitizer/Coincidences/minSectorDifference 186
+
+/gate/digitizer/Coincidences/MultiplesPolicy takeAllGoods

@@ -1,0 +1,11 @@
+# A T T A C H S Y S T E M
+/gate/systems/cylindricalPET/rsector/attach rsector
+/gate/systems/cylindricalPET/module/attach module
+/gate/systems/cylindricalPET/submodule/attach submodule
+# /gate/systems/cylindricalPET/crystal/attach crystal
+# /gate/systems/cylindricalPET/layer0/attach LYSO_cry
+# /gate/systems/cylindricalPET/layer1/attach Plastic_cry
+
+# A T T A C H L A Y E R SD
+/gate/submodule/attachCrystalSD
+# /gate/Plastic_cry/attachCrystalSD

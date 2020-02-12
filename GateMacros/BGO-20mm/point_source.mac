@@ -1,0 +1,14 @@
+/gate/source/addSource	point_activity
+/gate/source/point_activity/setActivity	43000000. becquerel
+/gate/source/point_activity/gps/particle e+
+/gate/source/point_activity/setForcedUnstableFlag true
+/gate/source/point_activity/setForcedHalfLife 6586.2 s
+/gate/source/point_activity/gps/energytype Fluor18
+
+/gate/source/point_activity/gps/type Volume
+/gate/source/point_activity/gps/shape Sphere
+/gate/source/point_activity/gps/radius 1 mm
+/gate/source/point_activity/gps/centre 0. 0. 0. cm
+/gate/source/point_activity/gps/angtype iso
+
+/gate/source/point_activity/attachTo pointSource

@@ -1,0 +1,148 @@
+#
+# Adapted to GATE 7 by
+# Nikos Efthimiou
+# 20 November 2015
+
+/gate/geometry/setMaterialDatabase ./GateMaterials.db
+
+#
+#	V I S U A L I S A T I O N
+#
+/vis/disable
+#/vis/open OGLSX
+#/vis/viewer/reset
+#/vis/viewer/set/viewpointThetaPhi 0 0
+#/vis/viewer/panTo 0 0
+##/vis/viewer/set/style surface
+#/vis/drawVolume
+#/tracking/storeTrajectory 0
+#/vis/scene/endOfEventAction accumulate 100
+#/vis/viewer/refresh	
+#/vis/scene/add/trajectories 
+#/vis/viewer/zoom 2
+
+
+#
+#     W O R L D
+#
+/gate/world/geometry/setXLength 120. cm
+/gate/world/geometry/setYLength 120. cm
+/gate/world/geometry/setZLength 25. cm
+#/gate/world/setMaterial Air
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#     D E F I N I T I O N   A N D   D E S C R I T I O N           #
+#             O F   Y O U R   P H Y S I C S                       #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+/control/execute ./mac/geometry_20.mac
+
+/control/execute ./mac/physics_7.mac
+
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#     D E F I N I T I O N   A N D   D E S C R I T I O N           #
+#             O F   Y O U R   P H A N T O M                       #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+# SCATTER AND COUNT RATE NEMA NU-2 2001 PHANTOM ( Daughter of world )
+
+/control/execute ./mac/NEMA_IQ_phantom.mac
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#            S E C O N D   P A R T   O F   Y O U R                #
+#                P E T   S I M U L A T I O N                      #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+
+
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#     I N I T I A L I Z A T I O N   O F   Y O U R                 #
+#                 S I M U L A T I O N                             #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+
+/gate/run/initialize
+
+
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#  D E F I N I T I O N   O F   Y O U R   A C Q U I S I T I O N    #
+#  D I G I T I Z E R   &   C O I N C I D E N C E   S H O R T E R  #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+/control/execute ./mac/digitizer.mac
+
+
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#                   D E F I N I T I O N   O F                     #
+#                Y O U R   O U T P U T   F I L E                  #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+
+#       S E T U P  - R O O T _ F I L E
+/gate/output/root/enable
+/gate/output/root/setFileName b2b_NEMAt
+/gate/output/root/setRootSinglesAdderFlag 0
+/gate/output/root/setRootSinglesReadoutFlag 0
+/gate/output/root/setRootHitFlag 0
+/gate/output/root/setRootSinglesFlag 0
+/gate/output/root/setRootNtupleFlag 0
+/gate/output/root/setRootCoincidencesFlag 1
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#                   D E F I N I T I O N   O F                     #
+#            Y O U R   V E R B O S I T Y   L E V E L              #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+/control/verbose 1
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/gate/application/verbose 0
+/gate/generator/verbose 0
+/gate/source/verbose 0
+
+
+/control/execute ./mac/NEMA_IQ_source.mac
+
+
+/gate/source/list
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#               S T A R T   A C Q U I S I T I O N                 #
+#                 T I M E   P A R A M E T E R S                   #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/random/verbose 1
+
+#
+# EXPERIMENT
+#
+/gate/application/setTimeSlice     1000  s
+/gate/application/setTimeStart     0  s
+/gate/application/setTimeStop      1000  s
+
+#
+# LET'S RUN THE SIMULATION!
+#
+/gate/application/startDAQ

@@ -1,0 +1,272 @@
+
+#
+#  The following phantom is Gate representation of the 
+#  NEMA 2-2001 IQ Phantom.  The dimensions of this phantom 
+#  are taken directly from "NEMA NU 2, Chapter 7, 2001".
+#  
+#   
+
+# Nikos Efthimiou
+# 20 November 2017
+
+
+#       P H A N T O M   G E O M E T R Y
+/gate/world/daughters/name NEMA_IQ
+/gate/world/daughters/insert box
+/gate/NEMA_IQ/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/NEMA_IQ/geometry/setXLength 30. cm
+/gate/NEMA_IQ/geometry/setYLength 30. cm
+/gate/NEMA_IQ/geometry/setZLength 15. cm
+/gate/NEMA_IQ/setMaterial Air
+#/gate/NEMA_IQ/vis/setColor gray
+/gate/NEMA_IQ/attachPhantomSD
+
+# Upper Half of Phantom
+# Center Section of Upper Outer Shell
+/gate/NEMA_IQ/daughters/name outershell1
+/gate/NEMA_IQ/daughters/insert cylinder
+/gate/outershell1/placement/setTranslation 0.0 -0.0 0.0 cm
+/gate/outershell1/geometry/setRmax 15. cm
+/gate/outershell1/geometry/setHeight 15 cm
+/gate/outershell1/geometry/setPhiStart 0. deg
+/gate/outershell1/geometry/setDeltaPhi 180. deg
+/gate/outershell1/setMaterial Plastic
+/gate/outershell1/vis/setColor red
+/gate/outershell1/attachPhantomSD
+
+# Water in Phantom
+/gate/outershell1/daughters/name upperinterior
+/gate/outershell1/daughters/insert cylinder
+/gate/upperinterior/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/upperinterior/geometry/setRmax 14.7 cm
+/gate/upperinterior/geometry/setHeight 15 cm
+/gate/upperinterior/geometry/setPhiStart 0. deg
+/gate/upperinterior/geometry/setDeltaPhi 180. deg
+/gate/upperinterior/setMaterial Water
+/gate/upperinterior/vis/setColor blue
+/gate/upperinterior/attachPhantomSD
+
+# Plastic Shell Surrounding Center Cylinder
+/gate/upperinterior/daughters/name centercyl
+/gate/upperinterior/daughters/insert cylinder
+/gate/centercyl/placement/setTranslation 0.0 3.5 0.0 cm
+/gate/centercyl/geometry/setRmax 2.5 cm
+/gate/centercyl/geometry/setHeight 15 cm
+/gate/centercyl/setMaterial Plastic
+/gate/centercyl/vis/setColor red
+/gate/centercyl/attachPhantomSD
+
+# Hollow Space in Central Cylinder
+/gate/centercyl/daughters/name centercylin
+/gate/centercyl/daughters/insert cylinder
+/gate/centercylin/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/centercylin/geometry/setRmax 2.1 cm
+/gate/centercylin/geometry/setHeight 15 cm
+/gate/centercylin/setMaterial Lung
+/gate/centercylin/vis/setColor gray
+/gate/centercylin/attachPhantomSD
+
+# Lower Left Corner Center Section Cylinder 
+/gate/NEMA_IQ/daughters/name outershell2
+/gate/NEMA_IQ/daughters/insert cylinder
+/gate/outershell2/placement/setTranslation 7.0 0.0 0.0 cm
+/gate/outershell2/geometry/setRmax 8. cm
+/gate/outershell2/geometry/setHeight 15 cm
+/gate/outershell2/geometry/setPhiStart 270. deg
+/gate/outershell2/geometry/setDeltaPhi  90. deg
+/gate/outershell2/setMaterial Plastic
+/gate/outershell2/vis/setColor red
+/gate/outershell2/attachPhantomSD
+
+/gate/outershell2/daughters/name LLinterior
+/gate/outershell2/daughters/insert cylinder
+/gate/LLinterior/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/LLinterior/geometry/setRmax 7.7 cm
+/gate/LLinterior/geometry/setHeight 15 cm
+/gate/LLinterior/geometry/setPhiStart 270. deg
+/gate/LLinterior/geometry/setDeltaPhi  90. deg
+/gate/LLinterior/setMaterial Water
+/gate/LLinterior/vis/setColor blue
+/gate/LLinterior/attachPhantomSD
+
+# Lower Right Corner Center Section Cylinder 
+/gate/NEMA_IQ/daughters/name outershell3
+/gate/NEMA_IQ/daughters/insert cylinder
+/gate/outershell3/placement/setTranslation -7.0 0.0 0.0 cm
+/gate/outershell3/geometry/setRmax 8. cm
+/gate/outershell3/geometry/setHeight 15 cm
+/gate/outershell3/geometry/setPhiStart 180. deg
+/gate/outershell3/geometry/setDeltaPhi  90. deg
+/gate/outershell3/setMaterial Plastic
+/gate/outershell3/vis/setColor red
+/gate/outershell3/attachPhantomSD
+
+/gate/outershell3/daughters/name LRinterior
+/gate/outershell3/daughters/insert cylinder
+/gate/LRinterior/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/LRinterior/geometry/setRmax 7.7 cm
+/gate/LRinterior/geometry/setHeight 15 cm
+/gate/LRinterior/geometry/setPhiStart 180. deg
+/gate/LRinterior/geometry/setDeltaPhi  90. deg
+/gate/LRinterior/setMaterial Water
+/gate/LRinterior/vis/setColor blue
+/gate/LRinterior/attachPhantomSD
+
+# Bottom Box
+/gate/NEMA_IQ/daughters/name outershell4
+/gate/NEMA_IQ/daughters/insert box
+/gate/outershell4/placement/setTranslation 0.0 -4.0 0.0 cm
+/gate/outershell4/geometry/setXLength 14. cm
+/gate/outershell4/geometry/setYLength  8. cm
+/gate/outershell4/geometry/setZLength 15 cm
+/gate/outershell4/setMaterial Plastic
+/gate/outershell4/vis/setColor red
+/gate/outershell4/attachPhantomSD
+
+# Interior Box
+/gate/outershell4/daughters/name BXinterior
+/gate/outershell4/daughters/insert box
+/gate/BXinterior/placement/setTranslation 0.0 0.15 0.0 cm
+/gate/BXinterior/geometry/setXLength 14. cm
+/gate/BXinterior/geometry/setYLength  7.7 cm
+/gate/BXinterior/geometry/setZLength 15 cm
+/gate/BXinterior/setMaterial Water
+/gate/BXinterior/vis/setColor blue
+/gate/BXinterior/attachPhantomSD
+
+
+# 10 mm Sphere Exterior
+/gate/upperinterior/daughters/name sphere10
+/gate/upperinterior/daughters/insert sphere
+/gate/sphere10/placement/setTranslation 2.86 8.45367 0.0 cm
+/gate/sphere10/geometry/setRmax 0.6 cm
+#/gate/sphere10/geometry/setRmin 0.5 cm
+/gate/sphere10/setMaterial Plastic
+/gate/sphere10/vis/setColor red
+/gate/sphere10/attachPhantomSD
+
+# 10 mm Sphere
+/gate/sphere10/daughters/name sphere10in
+/gate/sphere10/daughters/insert sphere
+/gate/sphere10in/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/sphere10in/geometry/setRmax 0.5 cm
+#/gate/sphere10in/geometry/setRmin 0.0 cm
+/gate/sphere10in/setMaterial Water
+/gate/sphere10in/vis/forceSolid
+/gate/sphere10in/vis/setColor gray
+/gate/sphere10in/attachPhantomSD
+
+
+# 13 mm Sphere Exterior
+/gate/upperinterior/daughters/name sphere13
+/gate/upperinterior/daughters/insert sphere
+/gate/sphere13/placement/setTranslation -2.86 8.45367 0.0 cm
+/gate/sphere13/geometry/setRmax 0.75 cm
+#/gate/sphere13/geometry/setRmin 0.65 cm
+/gate/sphere13/setMaterial Plastic
+/gate/sphere13/vis/forceSolid
+/gate/sphere13/vis/setColor red
+/gate/sphere13/attachPhantomSD
+
+# 13 mm Sphere
+/gate/sphere13/daughters/name sphere13in
+/gate/sphere13/daughters/insert sphere
+/gate/sphere13in/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/sphere13in/geometry/setRmax 0.65 cm
+#/gate/sphere13in/geometry/setRmin 0.0 cm
+/gate/sphere13in/setMaterial Water
+/gate/sphere13in/vis/forceSolid
+/gate/sphere13in/vis/setColor gray
+/gate/sphere13in/attachPhantomSD
+
+
+
+
+# 17 mm Sphere Exterior
+/gate/upperinterior/daughters/name sphere17
+/gate/upperinterior/daughters/insert sphere
+/gate/sphere17/placement/setTranslation -5.72 3.5 0.0 cm
+/gate/sphere17/geometry/setRmax 0.9 cm
+#/gate/sphere17/geometry/setRmin 0.85 cm
+/gate/sphere17/setMaterial Plastic
+/gate/sphere17/vis/setColor red
+/gate/sphere17/attachPhantomSD
+
+# 17 mm Sphere
+/gate/sphere17/daughters/name sphere17in
+/gate/sphere17/daughters/insert sphere
+/gate/sphere17in/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/sphere17in/geometry/setRmax 0.85 cm
+#/gate/sphere17in/geometry/setRmin 0.0 cm
+/gate/sphere17in/setMaterial Water
+/gate/sphere17in/vis/forceSolid
+/gate/sphere17in/vis/setColor gray
+/gate/sphere17in/attachPhantomSD
+
+
+# 22 mm Sphere Exterior
+/gate/BXinterior/daughters/name sphere22
+/gate/BXinterior/daughters/insert sphere
+/gate/sphere22/placement/setTranslation -2.86 2.39633 0.0 cm
+/gate/sphere22/geometry/setRmax 1.2 cm
+#/gate/sphere22/geometry/setRmin 1.1 cm
+/gate/sphere22/setMaterial Plastic
+/gate/sphere22/vis/setColor red
+/gate/sphere22/attachPhantomSD
+
+# 22 mm Sphere Interior
+/gate/sphere22/daughters/name sphere22in
+/gate/sphere22/daughters/insert sphere
+/gate/sphere22in/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/sphere22in/geometry/setRmax 1.1 cm
+#/gate/sphere22in/geometry/setRmin 0.0 cm
+/gate/sphere22in/setMaterial Water
+/gate/sphere22in/vis/forceSolid
+/gate/sphere22in/vis/setColor gray
+/gate/sphere22in/attachPhantomSD
+
+
+# 28 mm Sphere Exterior
+/gate/BXinterior/daughters/name sphere28
+/gate/BXinterior/daughters/insert sphere
+/gate/sphere28/placement/setTranslation 2.86 2.39633 0.0 cm
+/gate/sphere28/geometry/setRmax 1.5 cm
+#/gate/sphere28/geometry/setRmin 1.4 cm
+/gate/sphere28/setMaterial Plastic
+/gate/sphere28/vis/setColor green
+/gate/sphere28/attachPhantomSD
+
+# 28 mm Sphere
+/gate/sphere28/daughters/name sphere28in
+/gate/sphere28/daughters/insert sphere
+/gate/sphere28in/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/sphere28in/geometry/setRmax 1.4 cm
+#/gate/sphere28in/geometry/setRmin 0.0 cm
+/gate/sphere28in/setMaterial Water
+/gate/sphere28in/vis/forceSolid
+/gate/sphere28in/vis/setColor yellow
+/gate/sphere28in/attachPhantomSD
+
+
+# 37 mm Sphere Exterior
+/gate/upperinterior/daughters/name sphere37
+/gate/upperinterior/daughters/insert sphere
+/gate/sphere37/placement/setTranslation 5.72 3.5 0.0 cm
+/gate/sphere37/geometry/setRmax 1.95 cm
+#/gate/sphere37/geometry/setRmin 1.85 cm
+/gate/sphere37/setMaterial Plastic
+/gate/sphere37/vis/setColor green
+/gate/sphere37/attachPhantomSD
+
+# 37 mm Sphere
+/gate/sphere37/daughters/name sphere37in
+/gate/sphere37/daughters/insert sphere
+/gate/sphere37in/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/sphere37in/geometry/setRmax 1.85 cm
+#/gate/sphere37in/geometry/setRmin 0.0 cm
+/gate/sphere37in/setMaterial Water
+/gate/sphere37in/vis/forceSolid
+/gate/sphere37in/vis/setColor yellow
+/gate/sphere37in/attachPhantomSD
+
+

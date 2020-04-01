@@ -1,0 +1,8 @@
+/gate/world/daughters/name pointSource
+/gate/world/daughters/insert sphere
+/gate/pointSource/setMaterial Plastic
+/gate/pointSource/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/pointSource/geometry/setRmax  1 mm
+/gate/pointSource/vis/forceSolid
+/gate/pointSource/vis/setColor red
+/gate/pointSource/attachPhantomSD

@@ -1,0 +1,94 @@
+########################################
+#Small Animal PET simulation program
+# version 1.4 17-06-2015
+# @ Nikos Efthimiou
+########################################
+#	A D D E R
+/gate/digitizer/Singles/insert adder
+
+
+#       R E A D O U T 
+/gate/digitizer/Singles/insert readout
+/gate/digitizer/Singles/readout/setPolicy TakeEnergyWinner
+/gate/digitizer/Singles/readout/setDepth 3
+
+#      E N E R G Y   B L U R R I N G
+/gate/digitizer/Singles/insert blurring
+/gate/digitizer/Singles/blurring/setResolution 0.11
+/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
+
+#       E N E R G Y   C U T
+/gate/digitizer/Singles/insert thresholder
+/gate/digitizer/Singles/thresholder/setThreshold 300. keV
+/gate/digitizer/Singles/insert upholder
+/gate/digitizer/Singles/upholder/setUphold 700. keV
+
+# 	T I M E  R E S O L U T I O N
+
+/gate/digitizer/Singles/name newTiming
+/gate/digitizer/Singles/insert multTimeResolution 
+
+# 25 kernels
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 85.12 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 92.93 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 96.37 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 99.25 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 99.43 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 101.41 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 102.96 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 105.76 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 106.20 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 107.09 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 107.35 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 108.73 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 108.99 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 110.94 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 113.31 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 113.46 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 116.24 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 119.41 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 121.13 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 122.13 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 126.22 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 127.49 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 128.25 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 132.72 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+/gate/digitizer/Singles/newTiming/setMultTimeResolution 141.39 ps
+/gate/digitizer/Singles/newTiming/setMultTimeResolutionWeight 0.04
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+#/gate/digitizer/Singles/insert timeResolution 
+#/gate/digitizer/Singles/timeResolution/setTimeResolution 35.35 ps 
+
+#	C O I N C I    S O R T E R 
+/gate/digitizer/name Coincidences
+/gate/digitizer/insert coincidenceSorter
+/gate/digitizer/Coincidences/setWindow 4.5 ns
+/gate/digitizer/Coincidences/minSectorDifference 186
+
+/gate/digitizer/Coincidences/MultiplesPolicy takeAllGoods

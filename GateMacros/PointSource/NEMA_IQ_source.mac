@@ -1,0 +1,122 @@
+# Nikos Efthimiou
+# 20 November 2017
+
+### Background activity in phantom
+
+# Background Activity
+/gate/source/addSource				bck_activity
+/gate/source/bck_activity/setActivity		24000000. becquerel
+/gate/source/bck_activity/setType backtoback
+/gate/source/bck_activity/gps/particle gamma
+/gate/source/bck_activity/setForcedUnstableFlag	true
+/gate/source/bck_activity/setForcedHalfLife 	6586.2 s
+/gate/source/bck_activity/gps/energytype Mono
+/gate/source/bck_activity/gps/monoenergy 0.511 MeV
+/gate/source/bck_activity/attachTo NEMA_IQ
+/gate/source/bck_activity/gps/type 		Volume
+/gate/source/bck_activity/gps/shape Cylinder
+/gate/source/bck_activity/gps/radius 14.7 cm
+/gate/source/bck_activity/gps/halfz 7.5 cm
+/gate/source/bck_activity/gps/centre 0 0 0 cm
+/gate/source/bck_activity/gps/Forbid outershell1
+/gate/source/bck_activity/gps/Forbid NEMA_IQ
+
+/gate/source/bck_activity/gps/Forbid centercyl
+/gate/source/bck_activity/gps/Forbid centercylin
+
+#/gate/source/bck_activity/gps/Forbid outershell2
+#/gate/source/bck_activity/gps/Forbid outershell3
+#/gate/source/bck_activity/gps/Forbid outershell4
+
+/gate/source/bck_activity/gps/Forbid sphere10
+/gate/source/bck_activity/gps/Forbid sphere10in
+
+/gate/source/bck_activity/gps/Forbid sphere13
+/gate/source/bck_activity/gps/Forbid sphere13in
+
+/gate/source/bck_activity/gps/Forbid sphere17
+/gate/source/bck_activity/gps/Forbid sphere17in
+
+/gate/source/bck_activity/gps/Forbid sphere22
+/gate/source/bck_activity/gps/Forbid sphere22in
+
+/gate/source/bck_activity/gps/Forbid sphere28
+/gate/source/bck_activity/gps/Forbid sphere28in
+
+/gate/source/bck_activity/gps/Forbid sphere37
+/gate/source/bck_activity/gps/Forbid sphere37in
+
+#The angular distribution of emission angles is isotropic 
+/gate/source/bck_activity/gps/angtype 		iso
+#/gate/source/bck_activity/visualize 		10000 blue 2
+
+
+# Foreground Activity
+/gate/source/addSource				fore_activity
+/gate/source/fore_activity/setActivity		157410 becquerel
+/gate/source/fore_activity/setType backtoback
+/gate/source/fore_activity/gps/particle gamma
+/gate/source/fore_activity/setForcedUnstableFlag	true
+/gate/source/fore_activity/setForcedHalfLife 	6586.2 s
+/gate/source/fore_activity/gps/energytype Mono
+/gate/source/fore_activity/gps/monoenergy 0.511 MeV
+/gate/source/fore_activity/attachTo NEMA_IQ
+/gate/source/fore_activity/gps/type Volume
+/gate/source/fore_activity/gps/shape Cylinder
+/gate/source/fore_activity/gps/radius 14.7 cm
+/gate/source/fore_activity/gps/halfz 7.5 cm
+/gate/source/fore_activity/gps/centre 0 0 0 cm
+/gate/source/fore_activity/gps/Forbid outershell1
+/gate/source/fore_activity/gps/Forbid upperinterior
+/gate/source/fore_activity/gps/Forbid NEMA_IQ
+
+/gate/source/fore_activity/gps/Forbid centercyl
+/gate/source/fore_activity/gps/Forbid centercylin
+
+/gate/source/fore_activity/gps/Forbid outershell2
+/gate/source/fore_activity/gps/Forbid LRinterior
+/gate/source/fore_activity/gps/Forbid outershell3
+/gate/source/fore_activity/gps/Forbid LLinterior
+/gate/source/fore_activity/gps/Forbid outershell4
+/gate/source/fore_activity/gps/Forbid BXinterior
+
+/gate/source/fore_activity/gps/Forbid sphere10
+/gate/source/fore_activity/gps/Forbid sphere13
+/gate/source/fore_activity/gps/Forbid sphere17
+
+/gate/source/fore_activity/gps/Forbid sphere28
+/gate/source/fore_activity/gps/Forbid sphere28in
+
+/gate/source/fore_activity/gps/Forbid sphere37
+/gate/source/fore_activity/gps/Forbid sphere37in
+
+#The angular distribution of emission angles is isotropic 
+/gate/source/fore_activity/gps/angtype 		iso
+#/gate/source/fore_activity/visualize 		10000 red 2
+
+
+
+/gate/source/list
+
+##########################################################################
+##########################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

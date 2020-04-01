@@ -1,0 +1,112 @@
+########################################
+# Generic PET simulation
+# version 1.7 17-06-2015
+# @ Nikos Efthimiou
+########################################
+
+/gate/world/geometry/setXLength 120. cm
+/gate/world/geometry/setYLength 120. cm
+/gate/world/geometry/setZLength 25. cm
+
+# P E T   S Y S T E M
+/gate/world/daughters/name cylindricalPET
+/gate/world/daughters/insert cylinder
+/gate/cylindricalPET/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/cylindricalPET/geometry/setRmax 48.0 cm
+/gate/cylindricalPET/geometry/setRmin 45.0 cm
+/gate/cylindricalPET/geometry/setHeight 15.0 cm
+/gate/cylindricalPET/setMaterial Air
+/gate/cylindricalPET/vis/forceWireframe
+/gate/cylindricalPET/vis/setColor red
+/gate/cylindricalPET/vis/setVisible 1
+
+# R S E C T O R
+/gate/cylindricalPET/daughters/name rsector
+/gate/cylindricalPET/daughters/insert box
+/gate/rsector/placement/setTranslation 45.75 0.0 0.0 cm
+/gate/rsector/geometry/setXLength 2.0 cm
+/gate/rsector/geometry/setYLength 0.376 cm
+/gate/rsector/geometry/setZLength 15.04 cm
+/gate/rsector/setMaterial Air
+/gate/rsector/vis/setColor green
+/gate/rsector/vis/forceWireframe
+/gate/cylindricalPET/vis/setVisible 1
+
+# M O D U L E
+/gate/rsector/daughters/name module
+/gate/rsector/daughters/insert box
+/gate/module/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/module/geometry/setXLength 2.0 cm
+/gate/module/geometry/setYLength 0.376 cm
+/gate/module/geometry/setZLength 0.376 cm
+/gate/module/setMaterial Air
+/gate/module/vis/setColor gray
+/gate/module/vis/forceWireframe
+/gate/module/vis/setVisible 0
+
+# S U B M O D U L E
+/gate/module/daughters/name block
+/gate/module/daughters/insert box
+/gate/block/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/block/geometry/setXLength 2.0 cm
+/gate/block/geometry/setYLength 0.376 cm
+/gate/block/geometry/setZLength 0.376 cm
+/gate/block/setMaterial Air
+/gate/block/vis/setColor blue
+/gate/block/vis/forceWireframe
+/gate/block/vis/setVisible 0
+
+# C R Y S T A L
+/gate/block/daughters/name crystal
+/gate/block/daughters/insert box
+/gate/crystal/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/crystal/geometry/setXLength 2.0 cm
+/gate/crystal/geometry/setYLength 0.376 cm
+/gate/crystal/geometry/setZLength 0.376 cm
+/gate/crystal/setMaterial Air
+/gate/crystal/vis/forceWireframe
+/gate/crystal/vis/setVisible 0
+#/gate/crystal/vis/setColor white
+
+# C R Y S T A L (LSO)   L A Y E R
+/gate/crystal/daughters/name BGO_cry
+/gate/crystal/daughters/insert box
+/gate/BGO_cry/placement/setTranslation -1.0 0.0 0.0 cm
+/gate/BGO_cry/geometry/setXLength 2.0 cm
+/gate/BGO_cry/geometry/setYLength 0.376 cm
+/gate/BGO_cry/geometry/setZLength 0.376 cm
+/gate/BGO_cry/setMaterial BGO
+/gate/BGO_cry/vis/setColor blue
+/gate/BGO_cry/vis/setVisible 0
+#/gate/BGO_cry/vis/forceWireframe
+
+
+# R E P E A T   C R Y S T A L
+/gate/module/repeaters/insert cubicArray
+/gate/module/cubicArray/setRepeatNumberX 1
+/gate/module/cubicArray/setRepeatNumberY 1
+/gate/module/cubicArray/setRepeatNumberZ 40
+/gate/module/cubicArray/setRepeatVector 0.0 0.0 0.376 cm
+
+
+# R E P E A T   R S E C T O R
+/gate/rsector/repeaters/insert ring
+/gate/rsector/ring/setRepeatNumber 751
+
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#             A T T A C H    P H A N T O M     S D        &       #
+#             A T T A C H    C R Y S T A L     S D                #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+/gate/BGO_cry/attachCrystalSD
+
+#	A T T A C H    S Y S T E M : definition of your global detector
+#Attach System
+/gate/systems/cylindricalPET/rsector/attach rsector
+/gate/systems/cylindricalPET/module/attach module
+/gate/systems/cylindricalPET/submodule/attach block
+/gate/systems/cylindricalPET/crystal/attach crystal
+/gate/systems/cylindricalPET/layer0/attach BGO_cry

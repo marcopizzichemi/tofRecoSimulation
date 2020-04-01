@@ -1,0 +1,86 @@
+# VISUALITATION
+# /vis/disable
+#/control/execute {folder}/visu.mac
+
+# MATERIALS
+/gate/geometry/setMaterialDatabase {folder}/GateMaterials.db
+
+# GEOMETRY
+/control/execute {folder}/geometry.mac
+
+# PHYSICS
+/control/execute {folder}/physics.mac
+
+# PHANTOM GEOMETRY
+# /control/execute {folder}/SNR_source.mac
+#/control/execute {folder}/NEMA_IQ_phantom.mac
+/control/execute {folder}/point_phantom.mac
+
+
+
+# INITIALIZE
+/gate/run/initialize
+
+# DIGITIZER
+/control/execute {folder}/digitizer.mac
+
+# OUTPUT
+# ROOT Output format
+/gate/output/root/enable
+/gate/output/root/setFileName {outname}
+/gate/output/root/setRootSinglesAdderFlag 0
+/gate/output/root/setRootSinglesReadoutFlag 0
+/gate/output/root/setRootHitFlag 0
+/gate/output/root/setRootSinglesFlag 0
+/gate/output/root/setRootNtupleFlag 0
+/gate/output/root/setRootCoincidencesFlag 1
+
+# Verbosity
+/control/verbose 1
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/gate/application/verbose 0
+/gate/generator/verbose 0
+/gate/source/verbose 0
+
+# SOURCES
+#/control/execute {folder}/NEMA_IQ_source.mac
+/control/execute {folder}/point_source.mac
+
+###
+/gate/source/list
+/gate/physics/displayCuts
+#/gate/geometry/rebuild
+
+# RANDOM NUMBER GENERATOR
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed {seed}
+/gate/random/verbose 0
+
+# SIMULATION DURATION
+/gate/application/setTimeSlice     {time}  s
+/gate/application/setTimeStart     0. s
+/gate/application/setTimeStop      {time}  s
+
+# S T A R T   T H E   A C Q U I S I T I O N
+# /gate/application/startDAQ
+
+
+# T O   R U N   S I M
+# source root 5
+#
+# source /home/marco/Programs/Root/root-5.34.34/bin/thisroot.sh
+#
+# from run/ folder (~/cernbox/Universita/TOFreco/run):
+#
+# time Gate -a [folder,../tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um][time,0.01][cut,10][seed,123456789][outname,output] ../tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um/runSim.mac
+
+# T O   R U N   V I S
+# source root 5
+#
+# source /home/marco/Programs/Root/root-5.34.34/bin/thisroot.sh
+#
+# from run/ folder (~/cernbox/Universita/TOFreco/run):
+#
+# Gate --qt -a [folder,../tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um][time,0.01][cut,10][seed,123456789][outname,output] ../tofRecoSimulation/GateMacros/LYSO-200um_Plastic-250um/runVis.mac

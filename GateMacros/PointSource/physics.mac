@@ -1,0 +1,14 @@
+/gate/physics/addPhysicsList emstandard_opt3
+/gate/physics/addProcess PositronAnnihilation  e+
+/gate/physics/addProcess RadioactiveDecay
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+
+
+#
+#       C U T S
+#
+# Cuts for particles
+/gate/physics/Gamma/SetCutInRegion      world {cut} um
+/gate/physics/Electron/SetCutInRegion   world {cut} um
+/gate/physics/Positron/SetCutInRegion   world {cut} um

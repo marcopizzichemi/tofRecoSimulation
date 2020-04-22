@@ -1,0 +1,65 @@
+########################################
+#Small Animal PET simulation program
+# version 1.4 17-06-2015
+# @ Nikos Efthimiou
+########################################
+#	A D D E R
+/gate/digitizer/Singles/insert adder
+
+
+#       R E A D O U T 
+/gate/digitizer/Singles/insert readout
+/gate/digitizer/Singles/readout/setPolicy TakeEnergyWinner
+/gate/digitizer/Singles/readout/setDepth 3
+
+#      E N E R G Y   B L U R R I N G
+/gate/digitizer/Singles/insert blurring
+/gate/digitizer/Singles/blurring/setResolution 0.11
+/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
+
+#       E N E R G Y   C U T
+/gate/digitizer/Singles/insert thresholder
+/gate/digitizer/Singles/thresholder/setThreshold 300. keV
+/gate/digitizer/Singles/insert upholder
+/gate/digitizer/Singles/upholder/setUphold 700. keV
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+#	C O I N C I    S O R T E R 
+#/gate/digitizer/name Coincidences
+#/gate/digitizer/insert coincidenceSorter
+/gate/digitizer/Coincidences/setWindow 4.5 ns
+/gate/digitizer/Coincidences/minSectorDifference 186
+/gate/digitizer/Coincidences/MultiplesPolicy takeAllGoods
+
+#Line 1 (shifted)
+/gate/digitizer/Coincidences/setMultTimeResolutionMuA 0 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionMuB 17.1044 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionSDA 75.8202 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionSDB 277.392 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionWeight 0.590881
+/gate/digitizer/Coincidences/setCombinationWeight 0.04
+
+#Line 4 (shifted)
+/gate/digitizer/Coincidences/setMultTimeResolutionMuA 0 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionMuB 107.855 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionSDA 89.2021 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionSDB 299.497 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionWeight 0.482226
+/gate/digitizer/Coincidences/setCombinationWeight 0.04
+
+#Line 14 (shifted)
+/gate/digitizer/Coincidences/setMultTimeResolutionMuA 0 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionMuB 32.326 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionSDA 87.8573 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionSDB 331.085 ps
+/gate/digitizer/Coincidences/setMultTimeResolutionWeight 0.374355
+/gate/digitizer/Coincidences/setCombinationWeight 0.04
+
+
+
+
+
+
+
+ 
